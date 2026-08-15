@@ -21,6 +21,18 @@ assets/             icon, product screenshot, Ask AI animation
 .nojekyll           serve files as-is, no Jekyll processing
 ```
 
+## Machine-readable metadata
+
+- `robots.txt` — allows everything, points at the sitemap.
+- `sitemap.xml` — **add every new page here**, and bump `lastmod`.
+- `404.html` — GitHub Pages serves this for unknown paths. It uses root-absolute
+  paths (`/css/...`) because it can be served from any depth.
+- **JSON-LD** — a `SoftwareApplication` block in the head of `index.html` and
+  `download.html`. It states the version, licence, supported systems, and
+  feature list in a form search engines and AI models read directly, so
+  **`softwareVersion` and `datePublished` need bumping with each release**,
+  alongside the download URLs above.
+
 ## Navigation
 
 Every item in the header is a page, never a link into the middle of another

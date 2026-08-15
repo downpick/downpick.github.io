@@ -14,6 +14,9 @@
 <meta property="og:description" content="A free, open-source desktop client for PostgreSQL, SQL Server, and MongoDB.">
 <meta property="og:url" content="https://downpick.github.io/">
 <meta property="og:image" content="https://downpick.github.io/assets/screenshot.png">
+<meta property="og:image:width" content="2880">
+<meta property="og:image:height" content="1610">
+<meta property="og:image:alt" content="Downpick running a query against a PostgreSQL database">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="assets/downpick-icon.svg" type="image/svg+xml">
@@ -21,12 +24,53 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
 
 <link rel="stylesheet" href="css/tokens/colors.css">
 <link rel="stylesheet" href="css/tokens/typography.css">
 <link rel="stylesheet" href="css/tokens/spacing.css">
 <link rel="stylesheet" href="css/tokens/effects.css">
 <link rel="stylesheet" href="css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://downpick.github.io/#downpick",
+  "name": "Downpick",
+  "url": "https://downpick.github.io/",
+  "description": "A desktop database manager for PostgreSQL, SQL Server, and MongoDB, with an encrypted credential vault and an AI assistant that writes queries from your schema.",
+  "applicationCategory": "DeveloperApplication",
+  "applicationSubCategory": "Database Manager",
+  "operatingSystem": "macOS 12 or later, Windows 10 or later, Linux",
+  "softwareVersion": "1.0.0",
+  "datePublished": "2026-08-14",
+  "license": "https://opensource.org/licenses/MIT",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "downloadUrl": "https://downpick.github.io/download.html",
+  "installUrl": "https://downpick.github.io/download.html",
+  "softwareHelp": "https://downpick.github.io/docs.html",
+  "releaseNotes": "https://downpick.github.io/changelog.html",
+  "screenshot": "https://downpick.github.io/assets/screenshot.png",
+  "codeRepository": "https://github.com/downpick/downpick",
+  "featureList": [
+    "Connect to PostgreSQL, SQL Server, and MongoDB at the same time",
+    "Schema explorer down to columns and collection fields",
+    "Query editor with syntax highlighting and autocomplete for SQL and MongoDB shell syntax",
+    "Ask AI writes queries from your schema and cannot execute anything",
+    "Virtualized results grid for large result sets",
+    "Copy results as a table, or export to CSV or Excel",
+    "Encrypted credential vault with auto-lock",
+    "Confirmation before UPDATE or DELETE with no WHERE clause",
+    "Cancel a running query, or set a query timeout",
+    "No account, no telemetry"
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -68,7 +112,8 @@
     </div>
     <figure class="shot">
       <div class="shot-frame">
-        <img src="assets/screenshot.png" alt="Downpick running a query against a PostgreSQL database" width="2880" height="1610" data-fallback="Product screenshot">
+        <img src="assets/screenshot.png" alt="Downpick running a query against a PostgreSQL database"
+             width="2880" height="1610" fetchpriority="high" decoding="async" data-fallback="Product screenshot">
       </div>
       <figcaption>Query editor, schema explorer, and results grid — 1,260 rows in 44ms.</figcaption>
     </figure>
@@ -142,7 +187,8 @@
         </ul>
       </div>
       <div class="split-media">
-        <img src="assets/ai.gif" alt="Ask AI reading the schema and writing a query into the editor" data-fallback="Ask AI demo">
+        <img src="assets/ai.gif" alt="Ask AI reading the schema and writing a query into the editor"
+             width="1440" height="805" loading="lazy" decoding="async" data-fallback="Ask AI demo">
       </div>
     </div>
   </section>

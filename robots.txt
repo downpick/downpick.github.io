@@ -1,0 +1,7 @@
+# Downpick — everything here is public documentation for a free, open-source app.
+# All crawlers are welcome, search and AI alike.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://downpick.github.io/sitemap.xml
