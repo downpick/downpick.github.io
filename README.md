@@ -38,6 +38,17 @@ the header.
 and `docs/ai.gif` in the [app repository](https://github.com/downpick/downpick).
 Re-copy them from there when the UI changes.
 
+There are two versions of the logo, and they are not interchangeable:
+
+- **`downpick-mark.svg`** — cropped to the glyph (104×122, transparent). Use it
+  anywhere the logo sits inline on the page: the header, the footer, the closing
+  call to action. Size it with CSS `height` and leave `width: auto`; the `width`
+  and `height` attributes carry the intrinsic size so the aspect ratio is exact.
+- **`downpick-icon.svg`** — the app icon: the same glyph centred on a 400×400
+  `#0A0A0A` plate. The glyph is only 26% of that canvas, so it renders far too
+  small inline. Use it only for the favicon and the apple-touch-icon, which want
+  that margin.
+
 ## Download links
 
 `download.html` lists the six artifacts attached to the `v1.0.0` release and

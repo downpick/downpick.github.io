@@ -148,14 +148,16 @@ html { scroll-behavior: smooth; scroll-padding-top: 84px; }
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 11px;
   color: var(--text-primary);
-  font-size: var(--text-md);
+  font-size: 19px;
   font-weight: var(--weight-bold);
   letter-spacing: 0.02em;
 }
 .brand:hover { color: var(--text-primary); }
-.brand img { width: 26px; height: 26px; border-radius: var(--radius-sm); display: block; }
+/* downpick-mark.svg is cropped to the glyph, so the box is the mark. The
+   padded downpick-icon.svg is kept for the favicon, which wants the margin. */
+.brand img { height: 28px; width: auto; display: block; }
 
 .nav-links { display: flex; align-items: center; gap: 28px; }
 
@@ -377,7 +379,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 84px; }
   padding: 64px 40px;
   text-align: center;
 }
-.cta-icon { width: 48px; height: 48px; border-radius: 10px; display: block; margin: 0 auto 28px; }
+.cta-icon { height: 52px; width: auto; display: block; margin: 0 auto 28px; }
 .cta-title {
   font-size: clamp(28px, 4.5vw, 36px);
   font-weight: var(--weight-bold);
@@ -411,7 +413,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 84px; }
   flex-wrap: wrap;
 }
 .footer-brand { display: flex; align-items: center; gap: 10px; }
-.footer-brand img { width: 20px; height: 20px; border-radius: 5px; display: block; }
+.footer-brand img { height: 20px; width: auto; display: block; }
 .footer-brand span { font-size: var(--text-xs); color: var(--text-dim); }
 .footer-links { display: flex; align-items: center; gap: var(--space-5); font-size: var(--text-xs); flex-wrap: wrap; }
 .footer-links a { color: var(--text-secondary); transition: color var(--transition-base); }
