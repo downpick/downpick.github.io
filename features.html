@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Features — Downpick</title>
+<meta name="description" content="What Downpick does, in order: connect to every server at once, see the shape of your data, write or describe a query, and take the results away as a copy, CSV, or Excel.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="canonical" href="https://downpick.github.io/features.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Downpick">
+<meta property="og:title" content="Features — Downpick">
+<meta property="og:description" content="Connect, look, ask, take away — what Downpick does.">
+<meta property="og:url" content="https://downpick.github.io/features.html">
+<meta property="og:image" content="https://downpick.github.io/assets/screenshot.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/downpick-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/downpick-icon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="stylesheet" href="css/tokens/colors.css">
+<link rel="stylesheet" href="css/tokens/typography.css">
+<link rel="stylesheet" href="css/tokens/spacing.css">
+<link rel="stylesheet" href="css/tokens/effects.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="./">
+      <img src="assets/downpick-icon.svg" alt="" width="26" height="26">
+      <span>Downpick</span>
+    </a>
+    <div class="nav-links">
+      <span class="nav-current" aria-current="page">Features</span>
+      <a class="nav-link" href="index.html#databases">Databases</a>
+      <a class="nav-link" href="docs.html">Docs</a>
+      <a class="nav-link" href="index.html#changelog">What's new</a>
+      <a class="nav-link nav-link--github" href="https://github.com/downpick/downpick">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.71 1.23 1.87.87 2.33.67.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.83-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 014 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.52.56.83 1.28.83 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+        GitHub
+      </a>
+      <a class="btn btn--accent btn--sm" href="download.html">Download</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="page-head">
+    <h1 class="page-title">What Downpick does</h1>
+    <p class="page-lede">Four things, in order: connect, look, ask, take away.</p>
+  </section>
+
+  <section class="steps">
+    <div class="step-pair">
+      <div class="panel">
+        <p class="step-eyebrow">01 · Connect</p>
+        <h2 class="step-title">Every server, open at once</h2>
+        <p class="step-body">Add a connection once and it stays in the sidebar — staging next to production next to the local copy, each with a dot telling you whether it's live. Passwords go into the vault, not into a config file.</p>
+        <div class="mock">
+          <div class="mock-line">⬡ Ridgeline Analytics (staging) <span class="mock-dim">·</span> <span class="mock-dim">idle</span></div>
+          <div class="mock-line mock-line--strong">⬡ Ridgeline Coffee (local) <span class="mock-dim">·</span> <span class="mock-ok">connected</span></div>
+          <div class="mock-line">⬡ Telemetry <span class="mock-dim">·</span> <span class="mock-dim">idle</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <p class="step-eyebrow">02 · Look</p>
+        <h2 class="step-title">See the shape of your data</h2>
+        <p class="step-body">The explorer goes all the way down — databases, schemas, tables, columns and their types. On MongoDB, collections and their fields. Double-click any table to query it.</p>
+        <div class="mock">
+          <div class="mock-line mock-line--strong">▾ ▦ coffees</div>
+          <div class="mock-line mock-split"><span>&nbsp;&nbsp;— name</span><span class="mock-dim">text</span></div>
+          <div class="mock-line mock-split"><span>&nbsp;&nbsp;— price_cents</span><span class="mock-dim">integer</span></div>
+          <div class="mock-line mock-split"><span>&nbsp;&nbsp;— attributes</span><span class="mock-dim">jsonb</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps steps--tight">
+    <div class="panel step-split">
+      <div>
+        <p class="step-eyebrow">03 · Ask</p>
+        <h2 class="step-title">Write it, or describe it</h2>
+        <p class="step-body step-body--mid">The editor highlights and autocompletes SQL and MongoDB shell syntax, formats on a keystroke, and runs the selection if you've selected something.</p>
+        <p class="step-body step-body--last">Or press <span class="accent-inline">✦ Ask AI</span> and say what you're after. It reads your table and column names, writes the query, and waits. Running it is still your call — and a DELETE with no WHERE clause still asks twice.</p>
+      </div>
+      <img src="assets/ai.gif" alt="Ask AI reading the schema and writing a query into the editor" data-fallback="Ask AI demo">
+    </div>
+  </section>
+
+  <section class="steps steps--tight">
+    <div class="panel">
+      <p class="step-eyebrow">04 · Take away</p>
+      <div class="step-split step-split--top">
+        <div>
+          <h2 class="step-title">Results that behave</h2>
+          <p class="step-body step-body--last">A grid that scrolls smoothly at a hundred thousand rows, with types under every column heading. Mongo documents flatten into a table, or open as a tree, one document at a time. Then copy it as a table into Slack or Sheets, or export CSV or Excel.</p>
+        </div>
+        <div class="result-side">
+          <div class="stat-row">
+            <div class="stat">
+              <div class="stat-n">1,260</div>
+              <div class="stat-l">rows returned</div>
+            </div>
+            <div class="stat">
+              <div class="stat-n">44ms</div>
+              <div class="stat-l">round trip</div>
+            </div>
+            <div class="stat">
+              <div class="stat-n">3</div>
+              <div class="stat-l">export formats</div>
+            </div>
+          </div>
+          <div class="chip-row">
+            <span class="chip">⧉ Copy</span>
+            <span class="chip">↓ CSV</span>
+            <span class="chip">↓ Excel</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="eyebrow">And the rest</h2>
+    <div class="rest-grid">
+      <div class="rest">
+        <h3 class="rest-title">An encrypted vault</h3>
+        <p class="rest-body">Every connection password is encrypted behind one master password, locked on launch and re-locked after a period of inactivity you choose.</p>
+      </div>
+      <div class="rest">
+        <h3 class="rest-title">Cancel and timeouts</h3>
+        <p class="rest-body">Stop a long query with a keystroke, or set a timeout — 30 seconds by default — that stops it for you.</p>
+      </div>
+      <div class="rest">
+        <h3 class="rest-title">Confirmation on destructive statements</h3>
+        <p class="rest-body">UPDATE or DELETE with no WHERE clause, and Mongo updateMany or deleteMany with an empty filter, ask before they run.</p>
+      </div>
+      <div class="rest">
+        <h3 class="rest-title">Tabs, restored</h3>
+        <p class="rest-body">Your open query tabs, pane sizes, and window position come back exactly as you left them.</p>
+      </div>
+      <div class="rest">
+        <h3 class="rest-title">Errors, verbatim</h3>
+        <p class="rest-body">The server's own message, in monospace, with the line number — not a friendlier rewrite of it.</p>
+      </div>
+      <div class="rest">
+        <h3 class="rest-title">Keyboard first</h3>
+        <p class="rest-body">Run, cancel, format, new connection, lock the vault, open settings — all on shortcuts, all on the menu bar too.</p>
+      </div>
+      <div class="rest">
+        <h3 class="rest-title">Your choice of AI provider</h3>
+        <p class="rest-body">OpenAI, Anthropic, Gemini, Azure, or a local model on your own machine. Keys live in the vault.</p>
+      </div>
+      <div class="rest">
+        <h3 class="rest-title">Nothing phones home</h3>
+        <p class="rest-body">No telemetry, no account, no network access from the window that renders your data.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="cta">
+      <h2 class="cta-title">Try it on your own database.</h2>
+      <p class="cta-body">Nothing to sign up for. Download, set a password, connect.</p>
+      <div class="cta-actions">
+        <a class="btn btn--accent btn--lg" href="download.html">Download Downpick 1.0.0</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/downpick-icon.svg" alt="" width="20" height="20">
+      <span>Downpick 1.0.0 · MIT licence</span>
+    </div>
+    <div class="footer-links">
+      <a href="./">Home</a>
+      <a href="download.html">Download</a>
+      <a href="docs.html">Docs</a>
+      <a href="https://github.com/downpick/downpick">GitHub</a>
+      <a href="https://github.com/downpick/downpick/blob/main/SECURITY.md">Security</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+</body>
+</html>

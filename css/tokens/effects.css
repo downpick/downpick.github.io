@@ -1,0 +1,5 @@
+:root{
+--shadow-dialog:0 20px 40px rgba(0,0,0,0.5);
+--transition-fast:120ms ease; /* @kind other */
+--transition-base:160ms ease; /* @kind other */
+}

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentation — Downpick</title>
+<meta name="description" content="Downpick 1.0.0 documentation: getting started, connections, the encrypted vault, settings, AI providers, keyboard shortcuts, and where files live.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="canonical" href="https://downpick.github.io/docs.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Downpick">
+<meta property="og:title" content="Documentation — Downpick">
+<meta property="og:description" content="Everything Downpick does, and the handful of decisions it asks you to make.">
+<meta property="og:url" content="https://downpick.github.io/docs.html">
+<meta property="og:image" content="https://downpick.github.io/assets/screenshot.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/downpick-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/downpick-icon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="stylesheet" href="css/tokens/colors.css">
+<link rel="stylesheet" href="css/tokens/typography.css">
+<link rel="stylesheet" href="css/tokens/spacing.css">
+<link rel="stylesheet" href="css/tokens/effects.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="./">
+      <img src="assets/downpick-icon.svg" alt="" width="26" height="26">
+      <span>Downpick</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="features.html">Features</a>
+      <span class="nav-current" aria-current="page">Docs</span>
+      <a class="nav-link" href="index.html#changelog">What's new</a>
+      <a class="nav-link nav-link--github" href="https://github.com/downpick/downpick">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.71 1.23 1.87.87 2.33.67.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.83-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 014 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.52.56.83 1.28.83 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+        GitHub
+      </a>
+      <a class="btn btn--accent btn--sm" href="download.html">Download</a>
+    </div>
+  </nav>
+</header>
+
+<div class="docs">
+
+  <aside class="docs-nav">
+    <nav aria-label="Documentation">
+      <p class="docs-nav-title">Documentation</p>
+      <div class="docs-nav-list">
+        <a href="#getting-started">Getting started</a>
+        <a href="#connections">Connections</a>
+        <a href="#vault">The vault</a>
+        <a href="#settings">Settings</a>
+        <a href="#ai-providers">AI providers</a>
+        <a href="#shortcuts">Keyboard shortcuts</a>
+        <a href="#files">Where files live</a>
+      </div>
+      <div class="docs-nav-ext">
+        <a href="https://github.com/downpick/downpick/blob/main/SECURITY.md">Full security design ↗</a>
+        <a href="https://github.com/downpick/downpick/issues">Report a problem ↗</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="docs-main" id="main">
+    <h1 class="docs-h1">Documentation</h1>
+    <p class="docs-lede">Everything Downpick does, and the handful of decisions it asks you to make. Version 1.0.0.</p>
+
+    <section id="getting-started" class="docs-section docs-section--first">
+      <h2 class="docs-h2">Getting started</h2>
+      <p class="docs-p docs-p--wide">Four steps from download to first result. Nothing to sign up for.</p>
+
+      <div class="steps-list">
+        <div class="numstep">
+          <div class="numstep-n">01</div>
+          <div>
+            <h3 class="numstep-t">Install it</h3>
+            <p class="numstep-b">Open the installer for your platform from the <a href="download.html">download page</a>. On macOS, drag Downpick to Applications; on Windows, the installer lets you choose the folder; on Linux, mark the AppImage executable and run it.</p>
+          </div>
+        </div>
+        <div class="numstep">
+          <div class="numstep-n">02</div>
+          <div>
+            <h3 class="numstep-t">Set a master password</h3>
+            <p class="numstep-b">The first launch asks you to choose one. It's the only password Downpick will ever ask for, and it unlocks everything else. Write it down somewhere safe — see <a href="#vault">the vault</a> for why.</p>
+          </div>
+        </div>
+        <div class="numstep">
+          <div class="numstep-n">03</div>
+          <div>
+            <h3 class="numstep-t">Add a connection</h3>
+            <p class="numstep-b">Press <span class="mono">+</span> at the top of the explorer. Pick the engine, then paste in the host, port, database, user, and password your database administrator gave you. Downpick tests the connection before saving it.</p>
+          </div>
+        </div>
+        <div class="numstep">
+          <div class="numstep-n">04</div>
+          <div>
+            <h3 class="numstep-t">Run a query</h3>
+            <p class="numstep-b">Expand the connection, find a table, and double-click it — Downpick opens a tab with a query already written. Press <span class="mono" data-mac="Cmd+Enter" data-win="Ctrl+Enter">Cmd+Enter</span> to run it. Results appear below, with the row count and timing in the status bar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="connections" class="docs-section">
+      <h2 class="docs-h2">Connections</h2>
+      <p class="docs-p">Each connection is one server. Add as many as you like — they all stay in the explorer, and more than one can be live at once. The dot beside the name is grey when idle and green when connected.</p>
+      <p class="docs-p">The <span class="mono">⋮</span> menu on a connection edits it, disconnects it, or removes it. Removing a connection deletes its stored password from the vault too.</p>
+      <div class="note-box">
+        <h3 class="note-title">A note on MongoDB</h3>
+        <p class="note-body">Where SQL databases show schemas and tables, MongoDB shows databases and collections, and the editor takes shell-style queries: <span class="mono">db.users.find({...}).limit(20)</span> runs exactly as written.</p>
+      </div>
+    </section>
+
+    <section id="vault" class="docs-section">
+      <h2 class="docs-h2">The vault</h2>
+      <p class="docs-p">The vault is a single encrypted file on your computer that holds every secret Downpick knows: your connection details, your database passwords, and your AI provider keys. Nothing sensitive is stored anywhere else, and none of it is stored in plain text.</p>
+
+      <h3 class="docs-h3">How it's protected</h3>
+      <p class="docs-p docs-p--tight">Your master password is put through a deliberately slow calculation to derive a key, and that key encrypts the key that encrypts the file. In practice that means two things you'll notice: unlocking takes a moment, and changing your master password is instant — it re-wraps a small key rather than re-encrypting everything.</p>
+      <p class="docs-p docs-p--tight">If the file is ever damaged, Downpick tells you it's damaged rather than claiming your password is wrong. A backup copy of the previous version is kept alongside it.</p>
+
+      <div class="danger-box">
+        <h3 class="danger-title">⚠ There is no recovery</h3>
+        <p class="danger-body">If you forget your master password, nothing in the vault can be decrypted — not by you, not by us, not by anyone. There is no reset link and no back door. Keep the password in a password manager or on paper somewhere safe.</p>
+      </div>
+
+      <h3 class="docs-h3">Locking and unlocking</h3>
+      <p class="docs-p docs-p--tight">The vault starts locked every time you open Downpick, and the app refuses to do anything with your databases until you unlock it. Lock it again from the <span class="mono">🔓 Vault unlocked</span> button at the left of the status bar, or with <span class="mono" data-mac="Cmd+L" data-win="Ctrl+L">Cmd+L</span>.</p>
+      <p class="docs-p docs-p--tight">Locking also closes every open database connection, so nothing stays reachable behind a locked vault. It does not clear results already on screen.</p>
+      <p class="docs-p docs-p--last">Auto-lock can do this for you after a period of inactivity — off by default, see <a href="#settings">Settings</a>. It watches actual app activity rather than your mouse, so a long-running query is never interrupted by its own idle timer.</p>
+    </section>
+
+    <section id="settings" class="docs-section">
+      <h2 class="docs-h2">Settings</h2>
+      <p class="docs-p docs-p--wide">Open Settings with the <span class="mono">⚙</span> button at the right end of the status bar, or <span class="mono" data-mac="Cmd+," data-win="Ctrl+,">Cmd+,</span>. There are three sections.</p>
+
+      <p class="docs-eyebrow">General</p>
+      <div class="deftable deftable--gap">
+        <div class="defrow">
+          <div>
+            <div class="defrow-name">Restore open tabs on launch</div>
+            <div class="defrow-meta">on by default</div>
+          </div>
+          <p class="defrow-body">Reopens the query tabs you had open last time. Turn it off if your query text is sensitive — the tabs are stored in plain text.</p>
+        </div>
+        <div class="defrow">
+          <div>
+            <div class="defrow-name">Query timeout</div>
+            <div class="defrow-meta">0–3600s · default 30s</div>
+          </div>
+          <p class="defrow-body">Cancels a query still running after this long. Set it to 0 for no limit.</p>
+        </div>
+      </div>
+
+      <p class="docs-eyebrow">Security</p>
+      <div class="deftable deftable--gap">
+        <div class="defrow">
+          <div>
+            <div class="defrow-name">Vault file path</div>
+            <div class="defrow-meta">~/.downpick/vault.enc</div>
+          </div>
+          <p class="defrow-body">Where the encrypted vault lives — point it at an encrypted drive if you like. Must include the filename. Changing it locks the current vault; the file at the new path has its own master password, and one is created if nothing is there yet.</p>
+        </div>
+        <div class="defrow">
+          <div>
+            <div class="defrow-name">Change master password</div>
+            <div class="defrow-meta">no recovery</div>
+          </div>
+          <p class="defrow-body">Re-encrypts the vault key under a new password and deletes the previous backup file, which is still readable with the old password.</p>
+        </div>
+        <div class="defrow">
+          <div>
+            <div class="defrow-name">Auto-lock</div>
+            <div class="defrow-meta">0–1440 min · default off</div>
+          </div>
+          <p class="defrow-body">Re-locks the vault and closes every open connection after this much inactivity. It tracks app activity rather than mouse movement, so a long query is never interrupted by its own timer.</p>
+        </div>
+      </div>
+
+      <p class="docs-eyebrow">AI providers</p>
+      <p class="docs-p docs-p--last">Covered in full below. This section saves each change as you make it, so it has a plain <span class="strong-inline">Close</span> rather than a Save button.</p>
+    </section>
+
+    <section id="ai-providers" class="docs-section">
+      <h2 class="docs-h2">Adding and managing AI providers</h2>
+      <p class="docs-p docs-p--wide">Ask AI needs one provider and one model to work. You bring your own account — Downpick has no AI service of its own and sends nothing until you set one up.</p>
+
+      <div class="steps-list" style="margin-bottom: 32px;">
+        <div class="numstep">
+          <div class="numstep-n">01</div>
+          <div>
+            <h3 class="numstep-t">Open Settings → AI providers</h3>
+            <p class="numstep-b">Or jump straight there with <span class="mono" data-mac="Cmd+Shift+," data-win="Ctrl+Shift+,">Cmd+Shift+,</span>.</p>
+          </div>
+        </div>
+        <div class="numstep">
+          <div class="numstep-n">02</div>
+          <div>
+            <h3 class="numstep-t">Pick a provider and paste your key</h3>
+            <p class="numstep-b">Five kinds are supported, plus anything that speaks the OpenAI format:</p>
+            <div class="chip-row" style="margin-top: 14px;">
+              <span class="chip">OpenAI</span>
+              <span class="chip">Anthropic</span>
+              <span class="chip">Google Gemini</span>
+              <span class="chip">Azure OpenAI</span>
+              <span class="chip">Any OpenAI-compatible endpoint</span>
+            </div>
+            <p class="numstep-b">Keys go into the same encrypted vault as your database passwords, and are never handed back to the window that renders the app.</p>
+          </div>
+        </div>
+        <div class="numstep">
+          <div class="numstep-n">03</div>
+          <div>
+            <h3 class="numstep-t">Choose a model</h3>
+            <p class="numstep-b"><span class="strong-inline">Fetch from API</span> asks the provider which models your key can actually use, so you're picking from a real list rather than guessing. <span class="strong-inline">Add a model id</span> takes anything you type — a model newer than your copy of Downpick still works.</p>
+          </div>
+        </div>
+        <div class="numstep">
+          <div class="numstep-n">04</div>
+          <div>
+            <h3 class="numstep-t">Ask something</h3>
+            <p class="numstep-b">Close Settings, press <span class="accent-inline">✦ Ask AI</span> in the editor toolbar, and type your question. <span class="mono">Enter</span> sends it; <span class="mono">Shift+Enter</span> adds a line. When you like the query, click <span class="strong-inline">Insert into editor</span> — then run it yourself.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="docs-h3 docs-h3--flush">Running a model on your own machine</h3>
+      <p class="docs-p">If you'd rather nothing left your computer at all, add an OpenAI-compatible provider pointing at a local server — for example <span class="mono">http://localhost:11434/v1</span> for Ollama.</p>
+
+      <h3 class="docs-h3 docs-h3--flush">What leaves your machine</h3>
+      <div class="leave">
+        <div class="leave-cols">
+          <div class="leave-col leave-col--first">
+            <p class="leave-h">Sent to the provider</p>
+            <div class="leave-items">
+              <div>Your question, and the conversation so far</div>
+              <div>The <em class="leave-em">names</em> of the schemas, tables, and columns it looks up</div>
+            </div>
+          </div>
+          <div class="leave-col">
+            <p class="leave-h leave-h--ok">Never sent</p>
+            <div class="leave-items">
+              <div>Any row of your data — the assistant cannot run a query at all</div>
+              <div>Your database passwords or provider keys</div>
+            </div>
+          </div>
+        </div>
+        <div class="leave-foot">On MongoDB, describing a collection samples up to 50 documents to learn field names and types. The sampled values are read outside the window and discarded — only names and types reach the model.</div>
+      </div>
+    </section>
+
+    <section id="shortcuts" class="docs-section">
+      <h2 class="docs-h2">Keyboard shortcuts</h2>
+      <p class="docs-p">Everything below is also on the application menu, apart from the Ask AI box.</p>
+      <div class="deftable kbdtable">
+        <div class="defrow">
+          <div class="kbd" data-mac="Cmd+Enter · F5" data-win="Ctrl+Enter · F5">Cmd+Enter · F5</div>
+          <div class="kbd-action">Run the query, or just the selected text</div>
+        </div>
+        <div class="defrow">
+          <div class="kbd" data-mac="Cmd+Shift+Enter" data-win="Ctrl+Shift+Enter">Cmd+Shift+Enter</div>
+          <div class="kbd-action">Cancel the running query</div>
+        </div>
+        <div class="defrow">
+          <div class="kbd">Shift+Alt+F</div>
+          <div class="kbd-action">Format the query</div>
+        </div>
+        <div class="defrow">
+          <div class="kbd" data-mac="Cmd+N" data-win="Ctrl+N">Cmd+N</div>
+          <div class="kbd-action">New connection</div>
+        </div>
+        <div class="defrow">
+          <div class="kbd" data-mac="Cmd+," data-win="Ctrl+,">Cmd+,</div>
+          <div class="kbd-action">Open Settings</div>
+        </div>
+        <div class="defrow">
+          <div class="kbd" data-mac="Cmd+Shift+," data-win="Ctrl+Shift+,">Cmd+Shift+,</div>
+          <div class="kbd-action">Open Settings, straight to AI providers</div>
+        </div>
+        <div class="defrow">
+          <div class="kbd" data-mac="Cmd+L" data-win="Ctrl+L">Cmd+L</div>
+          <div class="kbd-action">Lock the vault</div>
+        </div>
+        <div class="defrow">
+          <div class="kbd">Enter · Shift+Enter</div>
+          <div class="kbd-action">In the Ask AI box: send the question / add a newline</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="files" class="docs-section">
+      <h2 class="docs-h2">Where files live</h2>
+      <p class="docs-p">Downpick keeps everything in one folder in your home directory. Nothing goes to a server.</p>
+      <div class="deftable">
+        <div class="filerow">
+          <div class="filerow-path">~/.downpick/vault.enc</div>
+          <div class="filerow-body">The encrypted vault: connections, database passwords, AI keys. A previous copy is kept as <span class="mono">vault.enc.bak</span>.</div>
+        </div>
+        <div class="filerow">
+          <div class="filerow-path">~/.downpick/settings.json</div>
+          <div class="filerow-body">Vault path, query timeout, and auto-lock. Holds no secrets, so it's plain text.</div>
+        </div>
+      </div>
+      <p class="docs-fine">Your open tabs are a separate, in-app preference and are stored in plain text — turn off tab restoration if your query text is sensitive.</p>
+    </section>
+
+    <section class="docs-section">
+      <div class="help">
+        <div>
+          <h2 class="help-title">Still stuck?</h2>
+          <p class="help-body">Open an issue on GitHub. Include what you did, what you expected, and the error text verbatim.</p>
+        </div>
+        <a class="btn btn--accent btn--help" href="https://github.com/downpick/downpick/issues">Open an issue</a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/downpick-icon.svg" alt="" width="20" height="20">
+      <span>Downpick 1.0.0 · MIT licence</span>
+    </div>
+    <div class="footer-links">
+      <a href="./">Home</a>
+      <a href="features.html">Features</a>
+      <a href="download.html">Download</a>
+      <a href="https://github.com/downpick/downpick">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+</body>
+</html>
