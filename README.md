@@ -8,8 +8,9 @@ The Downpick website — a static site served by GitHub Pages at
 ```
 index.html          home
 features.html       what Downpick does
-download.html       builds for every platform
 docs.html           documentation
+changelog.html      release notes
+download.html       builds for every platform
 
 css/tokens/*.css    design-system tokens, imported verbatim from the
                     Downpick design system (colors, typography, spacing, effects)
@@ -19,6 +20,17 @@ js/site.js          platform detection, Cmd-vs-Ctrl key labels, image fallbacks
 assets/             icon, product screenshot, Ask AI animation
 .nojekyll           serve files as-is, no Jekyll processing
 ```
+
+## Navigation
+
+Every item in the header is a page, never a link into the middle of another
+page: `Features · Docs · What's new · GitHub · [Download]`. The current page
+renders as a `.nav-current` span instead of a link. The header and the footer
+link list are identical on all five pages — keep them that way when adding a
+page, and add the new page to the footer list too.
+
+Section-level links (the homepage's `#databases` band) belong in the footer, not
+the header.
 
 ## Assets
 

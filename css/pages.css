@@ -31,6 +31,17 @@
   margin: 0;
 }
 
+/* First band under a page head, which already carries the top spacing. */
+.section--flush { padding-top: var(--space-7); }
+
+.release-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin: var(--space-5) 0 0;
+  font-size: var(--text-sm);
+}
+
 .panel {
   background: var(--bg-surface);
   border: 1px solid var(--border);
