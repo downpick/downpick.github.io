@@ -1,0 +1,135 @@
+---
+sitemapPriority: "1.0"
+layout: base.njk
+permalink: /index.html
+canonical: /
+title: "Downpick — all your databases, one window"
+description: "Downpick is a free, open-source desktop client for PostgreSQL, SQL Server, and MongoDB. Schema explorer, query editor, and a fast results grid — installed on your machine, with an encrypted credential vault."
+ogDescription: "A free, open-source desktop client for PostgreSQL, SQL Server, and MongoDB."
+jsonld: true
+---
+<main id="main">
+
+  <section class="hero">
+    <p class="badge">
+      <span class="badge-dot" aria-hidden="true"></span>
+      Version {{ release.version }} — free and open source
+    </p>
+    <h1 class="hero-title">All your databases, one window.</h1>
+    <p class="hero-sub">Downpick connects to PostgreSQL, SQL Server, and MongoDB, shows you what's in them, and runs your queries. It installs on your machine, keeps your passwords in an encrypted vault, and asks nothing of you beyond a password.</p>
+    <div class="hero-cta">
+      <a class="btn btn--accent btn--lg" href="/download.html">
+        <span>Download for <span data-platform-name>macOS</span></span>
+      </a>
+      <p class="hero-cta-note"><span data-platform-detail>Apple Silicon · .dmg</span> · <a class="link-quiet" href="/download.html">Other platforms</a></p>
+    </div>
+    <figure class="shot">
+      <div class="shot-frame">
+        <img src="/assets/screenshot.png" alt="Downpick running a query against a PostgreSQL database"
+             width="2880" height="1610" fetchpriority="high" decoding="async" data-fallback="Product screenshot">
+      </div>
+      <figcaption>Query editor, schema explorer, and results grid — 1,260 rows in 44ms.</figcaption>
+    </figure>
+  </section>
+
+  <section id="databases" class="section">
+    <h2 class="eyebrow">Supported databases</h2>
+    <div class="db-grid">
+      <div class="card">
+        <div class="card-icon" aria-hidden="true">🐘</div>
+        <h3 class="card-title">PostgreSQL</h3>
+        <p class="card-body">Schemas, tables, and columns with their types. Full SQL, formatted on demand.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" aria-hidden="true">🗄️</div>
+        <h3 class="card-title">SQL Server</h3>
+        <p class="card-body">The same explorer and editor, against your Microsoft SQL Server instances.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" aria-hidden="true">🍃</div>
+        <h3 class="card-title">MongoDB</h3>
+        <p class="card-body">Shell-style queries run as written. Documents as a flat table or an expandable tree.</p>
+      </div>
+    </div>
+    <p class="section-note">Connect to as many of them as you like, at the same time.</p>
+  </section>
+
+  <section id="features" class="section">
+    <h2 class="section-title">Everything the work needs, nothing it doesn't.</h2>
+    <p class="section-lede">One window, high density, no dashboards to configure.</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <h3 class="feature-title">Big results stay fast</h3>
+        <p class="feature-body">The results grid draws only what's on screen, so a hundred thousand rows scrolls like ten.</p>
+      </div>
+      <div class="feature">
+        <h3 class="feature-title">Take the answer with you</h3>
+        <p class="feature-body">Copy as a table straight into Slack, Sheets, or Excel — or export the whole set to CSV or Excel.</p>
+      </div>
+      <div class="feature">
+        <h3 class="feature-title">A guard on the dangerous ones</h3>
+        <p class="feature-body">An UPDATE or DELETE with no WHERE clause asks you to confirm before it touches every row.</p>
+      </div>
+      <div class="feature">
+        <h3 class="feature-title">Stop a query mid-flight</h3>
+        <p class="feature-body">Watch the clock climb while it runs, cancel anything taking too long, or set a timeout that cancels it for you.</p>
+      </div>
+      <div class="feature">
+        <h3 class="feature-title">Passwords under one lock</h3>
+        <p class="feature-body">Every credential lives in an encrypted vault on your machine, locked until you unlock it.</p>
+      </div>
+      <div class="feature">
+        <h3 class="feature-title">Exactly where you left off</h3>
+        <p class="feature-body">Open tabs, pane sizes, and window position all come back after a restart.</p>
+      </div>
+      <div class="feature">
+        <h3 class="feature-title">Every conversation, kept</h3>
+        <p class="feature-body">Ask AI chats are saved. Each tab keeps its own, and the history lists every one you've had — reopen it or clear the lot.</p>
+      </div>
+      <div class="feature">
+        <h3 class="feature-title">The statements that return nothing</h3>
+        <p class="feature-body">An UPDATE or a CREATE INDEX lands in Messages, one line per statement, with the rows each one touched.</p>
+      </div>
+      <div class="feature">
+        <h3 class="feature-title">Refresh without reconnecting</h3>
+        <p class="feature-body">Someone added a database while you were connected? Reload the list from the connection menu, connection intact.</p>
+      </div>
+    </div>
+    <p class="section-more"><a href="/features.html">All features →</a></p>
+  </section>
+
+  <section class="section">
+    <div class="split">
+      <div class="split-copy">
+        <p class="eyebrow eyebrow--accent">✦ Ask AI</p>
+        <h2 class="split-title">Describe the question. Get the query.</h2>
+        <p class="split-body">Ask in plain language. The assistant reads your schema — the names of tables and columns, nothing more — and writes the query into the editor.</p>
+        <p class="split-body">It cannot run anything. Nothing happens until you press Run, and the confirmation prompts still apply.</p>
+        <ul class="checklist">
+          <li><span class="check" aria-hidden="true">✓</span> No row data ever leaves your machine</li>
+          <li><span class="check" aria-hidden="true">✓</span> Your choice of provider, including local models</li>
+          <li><span class="check" aria-hidden="true">✓</span> Conversations are kept — pick any of them back up</li>
+          <li><span class="check" aria-hidden="true">✓</span> Optional — the rest of Downpick works without it</li>
+        </ul>
+      </div>
+      <div class="split-media">
+        <img src="/assets/ai.gif" alt="Ask AI reading the schema and writing a query into the editor"
+             width="1440" height="805" loading="lazy" decoding="async" data-fallback="Ask AI demo">
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="cta">
+      <img class="cta-icon" src="/assets/downpick-mark.svg" alt="" width="104" height="122">
+      <h2 class="cta-title">Free, and yours to keep.</h2>
+      <p class="cta-body">MIT licensed, no account, no telemetry. Runs on Windows, macOS, and Linux.</p>
+      <div class="cta-actions">
+        <a class="btn btn--accent btn--lg" href="/download.html">Download Downpick {{ release.version }}</a>
+        <a class="btn btn--ghost btn--lg" href="https://github.com/downpick/downpick">View source</a>
+      </div>
+    </div>
+  </section>
+
+</main>

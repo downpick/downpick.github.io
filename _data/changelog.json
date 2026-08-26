@@ -1,0 +1,27 @@
+[
+  {
+    "version": "1.1.0",
+    "date": "25 August 2026",
+    "title": "Conversations that keep, and queries you can watch",
+    "notes": [
+      "Ask AI conversations are saved. Every tab keeps its own, and the history button lists every past chat — pick one back up, or clear them all",
+      "A running query now shows a live timer and a cancel button instead of an empty grid",
+      "New Messages view for statements that return no rows — one line per statement, with the rows each one affected",
+      "Refresh a connection's database list without disconnecting it",
+      "The Ask AI box grows with your question rather than scrolling inside two lines",
+      "Fixed: macOS no longer reports the app as damaged on first launch, and the dock icon is correct"
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "date": "14 August 2026",
+    "title": "First release",
+    "notes": [
+      "PostgreSQL, SQL Server, and MongoDB, connected at the same time",
+      "Schema explorer down to columns and collection fields",
+      "Ask AI writes queries from your schema — read-only, never executes",
+      "Encrypted credential vault with auto-lock",
+      "Copy as table, export to CSV or Excel"
+    ]
+  }
+]

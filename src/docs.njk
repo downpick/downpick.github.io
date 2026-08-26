@@ -1,61 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Documentation — Downpick</title>
-<meta name="description" content="Downpick 1.1.0 documentation: getting started, connections, running queries, the encrypted vault, settings, AI providers, keyboard shortcuts, and where files live.">
-<meta name="theme-color" content="#0A0A0A">
-<link rel="canonical" href="https://downpick.github.io/docs.html">
-
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Downpick">
-<meta property="og:title" content="Documentation — Downpick">
-<meta property="og:description" content="Everything Downpick does, and the handful of decisions it asks you to make.">
-<meta property="og:url" content="https://downpick.github.io/docs.html">
-<meta property="og:image" content="https://downpick.github.io/assets/screenshot.png">
-<meta property="og:image:width" content="2880">
-<meta property="og:image:height" content="1610">
-<meta property="og:image:alt" content="Downpick running a query against a PostgreSQL database">
-<meta name="twitter:card" content="summary_large_image">
-
-<link rel="icon" href="assets/downpick-icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="assets/downpick-icon.svg">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
-
-<link rel="stylesheet" href="css/tokens/colors.css">
-<link rel="stylesheet" href="css/tokens/typography.css">
-<link rel="stylesheet" href="css/tokens/spacing.css">
-<link rel="stylesheet" href="css/tokens/effects.css">
-<link rel="stylesheet" href="css/site.css">
-<link rel="stylesheet" href="css/pages.css">
-</head>
-<body>
-
-<a class="skip-link" href="#main">Skip to content</a>
-
-<header class="site-header">
-  <nav class="nav" aria-label="Primary">
-    <a class="brand" href="./">
-      <img src="assets/downpick-mark.svg" alt="" width="104" height="122">
-      <span>Downpick</span>
-    </a>
-    <div class="nav-links">
-      <a class="nav-link" href="features.html">Features</a>
-      <span class="nav-current" aria-current="page">Docs</span>
-      <a class="nav-link" href="changelog.html">What's new</a>
-      <a class="nav-link nav-link--github" href="https://github.com/downpick/downpick">
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.71 1.23 1.87.87 2.33.67.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.83-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 014 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.52.56.83 1.28.83 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8 8 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-        GitHub
-      </a>
-      <a class="btn btn--accent btn--sm" href="download.html">Download</a>
-    </div>
-  </nav>
-</header>
-
+---
+sitemapPriority: "0.8"
+layout: base.njk
+permalink: /docs.html
+navKey: docs
+title: "Documentation — Downpick"
+description: "Downpick {version} documentation: getting started, connections, running queries, the encrypted vault, settings, AI providers, keyboard shortcuts, and where files live."
+ogDescription: "Everything Downpick does, and the handful of decisions it asks you to make."
+pagesCss: true
+---
 <div class="docs">
 
   <aside class="docs-nav">
@@ -80,7 +32,7 @@
 
   <main class="docs-main" id="main">
     <h1 class="docs-h1">Documentation</h1>
-    <p class="docs-lede">Everything Downpick does, and the handful of decisions it asks you to make. Version 1.1.0.</p>
+    <p class="docs-lede">Everything Downpick does, and the handful of decisions it asks you to make. Version {{ release.version }}.</p>
 
     <section id="getting-started" class="docs-section docs-section--first">
       <h2 class="docs-h2">Getting started</h2>
@@ -91,7 +43,7 @@
           <div class="numstep-n">01</div>
           <div>
             <h3 class="numstep-t">Install it</h3>
-            <p class="numstep-b">Grab the build for your platform from the <a href="download.html">download page</a>. On macOS, open the dmg and drag Downpick to Applications; on Windows, extract the zip anywhere and run <span class="mono">Downpick.exe</span>; on Linux, mark the AppImage executable and run it. The builds are unsigned, so the first launch needs one extra step — on macOS, System Settings → Privacy &amp; Security → Open Anyway; on Windows, More info → Run anyway.</p>
+            <p class="numstep-b">Grab the build for your platform from the <a href="/download.html">download page</a>. On macOS, open the dmg and drag Downpick to Applications; on Windows, extract the zip anywhere and run <span class="mono">Downpick.exe</span>; on Linux, mark the AppImage executable and run it. The builds are unsigned, so the first launch needs one extra step — on macOS, System Settings → Privacy &amp; Security → Open Anyway; on Windows, More info → Run anyway.</p>
           </div>
         </div>
         <div class="numstep">
@@ -350,26 +302,3 @@
     </section>
   </main>
 </div>
-
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <img src="assets/downpick-mark.svg" alt="" width="104" height="122">
-      <span>Downpick 1.1.0 · MIT licence</span>
-    </div>
-    <div class="footer-links">
-      <a href="./">Home</a>
-      <a href="features.html">Features</a>
-      <a href="index.html#databases">Databases</a>
-      <a href="docs.html">Docs</a>
-      <a href="changelog.html">What's new</a>
-      <a href="download.html">Download</a>
-      <a href="https://github.com/downpick/downpick">GitHub</a>
-      <a href="https://github.com/downpick/downpick/blob/main/SECURITY.md">Security</a>
-    </div>
-  </div>
-</footer>
-
-<script src="js/site.js"></script>
-</body>
-</html>

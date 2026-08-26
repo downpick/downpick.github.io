@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+{%- if noindex %}
+<meta name="robots" content="noindex">
+{%- else %}
+<meta name="description" content="{{ description }}">
+{%- endif %}
+<meta name="theme-color" content="{{ site.themeColor }}">
+{%- if not noindex %}
+<link rel="canonical" href="{{ site.url }}{{ canonical or permalink }}">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ ogTitle or title }}">
+<meta property="og:description" content="{{ ogDescription or description }}">
+<meta property="og:url" content="{{ site.url }}{{ canonical or permalink }}">
+<meta property="og:image" content="{{ site.url }}{{ site.ogImage.src }}">
+<meta property="og:image:width" content="{{ site.ogImage.width }}">
+<meta property="og:image:height" content="{{ site.ogImage.height }}">
+<meta property="og:image:alt" content="{{ site.ogImage.alt }}">
+<meta name="twitter:card" content="summary_large_image">
+{%- endif %}
+
+<link rel="icon" href="/assets/downpick-icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/downpick-icon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
+
+<link rel="stylesheet" href="/css/tokens/colors.css">
+<link rel="stylesheet" href="/css/tokens/typography.css">
+<link rel="stylesheet" href="/css/tokens/spacing.css">
+<link rel="stylesheet" href="/css/tokens/effects.css">
+<link rel="stylesheet" href="/css/site.css">
+{%- if pagesCss %}
+<link rel="stylesheet" href="/css/pages.css">
+{%- endif %}
+{%- if jsonld %}
+{% include "jsonld.njk" %}
+{%- endif %}
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+{% include "header.njk" %}
+
+{{ content | safe }}
+
+{% include "footer.njk" %}
+
+<script>window.DOWNPICK_RELEASE={{ release.client | dump | safe }};</script>
+<script src="/js/site.js"></script>
+</body>
+</html>

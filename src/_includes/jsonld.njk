@@ -1,0 +1,33 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "{{ site.url }}/#downpick",
+  "name": "{{ site.name }}",
+  "url": "{{ site.url }}/",
+  "description": "{{ site.description }}",
+  "applicationCategory": "DeveloperApplication",
+  "applicationSubCategory": "Database Manager",
+  "operatingSystem": "macOS 12 or later, Windows 10 or later, Linux",
+  "softwareVersion": "{{ release.version }}",
+  "datePublished": "{{ release.date }}",
+  "license": "https://opensource.org/licenses/MIT",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "downloadUrl": "{{ site.url }}/download.html",
+  "installUrl": "{{ site.url }}/download.html",
+  "softwareHelp": "{{ site.url }}/docs.html",
+  "releaseNotes": "{{ site.url }}/changelog.html",
+  "screenshot": "{{ site.url }}{{ site.ogImage.src }}",
+  "codeRepository": "{{ site.repo }}",
+  "featureList": [
+{%- for feature in features %}
+    "{{ feature }}"{% if not loop.last %},{% endif %}
+{%- endfor %}
+  ]
+}
+</script>
