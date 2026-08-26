@@ -68,7 +68,7 @@
       <div class="panel">
         <p class="step-eyebrow">01 · Connect</p>
         <h2 class="step-title">Every server, open at once</h2>
-        <p class="step-body">Add a connection once and it stays in the sidebar — staging next to production next to the local copy, each with a dot telling you whether it's live. Passwords go into the vault, not into a config file.</p>
+        <p class="step-body">Add a connection once and it stays in the sidebar — staging next to production next to the local copy, each with a dot telling you whether it's live. Passwords go into the vault, not into a config file. If a database appears while you're connected, reload the list from the connection's menu without dropping the connection.</p>
         <div class="mock">
           <div class="mock-line">⬡ Ridgeline Analytics (staging) <span class="mock-dim">·</span> <span class="mock-dim">idle</span></div>
           <div class="mock-line mock-line--strong">⬡ Ridgeline Coffee (local) <span class="mock-dim">·</span> <span class="mock-ok">connected</span></div>
@@ -95,7 +95,7 @@
         <p class="step-eyebrow">03 · Ask</p>
         <h2 class="step-title">Write it, or describe it</h2>
         <p class="step-body step-body--mid">The editor highlights and autocompletes SQL and MongoDB shell syntax, formats on a keystroke, and runs the selection if you've selected something.</p>
-        <p class="step-body step-body--last">Or press <span class="accent-inline">✦ Ask AI</span> and say what you're after. It reads your table and column names, writes the query, and waits. Running it is still your call — and a DELETE with no WHERE clause still asks twice.</p>
+        <p class="step-body step-body--last">Or press <span class="accent-inline">✦ Ask AI</span> and say what you're after. It reads your table and column names, writes the query, and waits. Running it is still your call — and a DELETE with no WHERE clause still asks twice. Every conversation is saved, so the question you asked last week is one click away in the history.</p>
       </div>
       <img src="assets/ai.gif" alt="Ask AI reading the schema and writing a query into the editor"
              width="1440" height="805" loading="lazy" decoding="async" data-fallback="Ask AI demo">
@@ -144,7 +144,7 @@
       </div>
       <div class="rest">
         <h3 class="rest-title">Cancel and timeouts</h3>
-        <p class="rest-body">Stop a long query with a keystroke, or set a timeout — 30 seconds by default — that stops it for you.</p>
+        <p class="rest-body">A running query shows how long it has been going and a button to stop it. Cancel with a keystroke, or set a timeout — 30 seconds by default — that stops it for you.</p>
       </div>
       <div class="rest">
         <h3 class="rest-title">Confirmation on destructive statements</h3>
@@ -170,6 +170,14 @@
         <h3 class="rest-title">Nothing phones home</h3>
         <p class="rest-body">No telemetry, no account, no network access from the window that renders your data.</p>
       </div>
+      <div class="rest">
+        <h3 class="rest-title">A Messages view</h3>
+        <p class="rest-body">Statements that return no rows — UPDATE, DELETE, the DDL half of a batch — get their own list, one line each, with the rows affected and the time taken.</p>
+      </div>
+      <div class="rest">
+        <h3 class="rest-title">Ask AI history</h3>
+        <p class="rest-body">Conversations are saved, one per tab, and the history lists them all across every connection. Resume one, or clear them all at once.</p>
+      </div>
     </div>
   </section>
 
@@ -178,7 +186,7 @@
       <h2 class="cta-title">Try it on your own database.</h2>
       <p class="cta-body">Nothing to sign up for. Download, set a password, connect.</p>
       <div class="cta-actions">
-        <a class="btn btn--accent btn--lg" href="download.html">Download Downpick 1.0.0</a>
+        <a class="btn btn--accent btn--lg" href="download.html">Download Downpick 1.1.0</a>
       </div>
     </div>
   </section>
@@ -189,7 +197,7 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="assets/downpick-mark.svg" alt="" width="104" height="122">
-      <span>Downpick 1.0.0 · MIT licence</span>
+      <span>Downpick 1.1.0 · MIT licence</span>
     </div>
     <div class="footer-links">
       <a href="./">Home</a>

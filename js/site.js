@@ -11,14 +11,14 @@
 
   /* ---------- platform detection (home + download pages) ---------- */
 
-  var RELEASE = 'https://github.com/downpick/downpick/releases/download/v1.0.0/';
+  var RELEASE = 'https://github.com/downpick/downpick/releases/download/v1.1.0/';
 
   // [button label, sub-detail, download-page title, release filename]
   var PLATFORMS = {
-    'mac-arm': ['macOS', 'Apple Silicon · .dmg', 'macOS · Apple Silicon', 'Downpick-1.0.0-arm64.dmg'],
-    'mac-intel': ['macOS', 'Intel · .dmg', 'macOS · Intel', 'Downpick-1.0.0.dmg'],
-    'win': ['Windows', 'x64 · .zip', 'Windows · x64', 'Downpick-1.0.0-win.zip'],
-    'linux': ['Linux', 'AppImage · x64', 'Linux · x64', 'Downpick-1.0.0.AppImage']
+    'mac-arm': ['macOS', 'Apple Silicon · .dmg', 'macOS · Apple Silicon', 'Downpick-1.1.0-arm64.dmg'],
+    'mac-intel': ['macOS', 'Intel · .dmg', 'macOS · Intel', 'Downpick-1.1.0.dmg'],
+    'win': ['Windows', 'x64 · .zip', 'Windows · x64', 'Downpick-1.1.0-win.zip'],
+    'linux': ['Linux', 'AppImage · x64', 'Linux · x64', 'Downpick-1.1.0.AppImage']
   };
 
   function detectPlatform() {

@@ -63,11 +63,11 @@ There are two versions of the logo, and they are not interchangeable:
 
 ## Download links
 
-`download.html` lists the six artifacts attached to the `v1.0.0` release and
+`download.html` lists the six artifacts attached to the `v1.1.0` release and
 links each one directly:
 
 ```
-https://github.com/downpick/downpick/releases/download/v1.0.0/<filename>
+https://github.com/downpick/downpick/releases/download/v1.1.0/<filename>
 ```
 
 The same base URL is in `js/site.js` as `RELEASE`, which builds the link for the
