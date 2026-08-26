@@ -1,0 +1,13 @@
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/assets/downpick-mark.svg" alt="" width="104" height="122">
+      <span>{{ site.name }} {{ release.version }} · {{ site.licence }}</span>
+    </div>
+    <div class="footer-links">
+      {%- for link in site.footerLinks %}
+      <a href="{{ link.href }}">{{ link.label | safe }}</a>
+      {%- endfor %}
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,35 @@
+{
+  "name": "Downpick",
+  "url": "https://downpick.github.io",
+  "repo": "https://github.com/downpick/downpick",
+  "security": "https://github.com/downpick/downpick/blob/main/SECURITY.md",
+  "releases": "https://github.com/downpick/downpick/releases",
+  "licence": "MIT licence",
+  "themeColor": "#0A0A0A",
+  "ogImage": {
+    "src": "/assets/screenshot.png",
+    "width": "2880",
+    "height": "1610",
+    "alt": "Downpick running a query against a PostgreSQL database"
+  },
+  "description": "A desktop database manager for PostgreSQL, SQL Server, and MongoDB, with an encrypted credential vault and an AI assistant that writes queries from your schema.",
+
+  "_comment": "nav: every item is a page, never a link into the middle of one. Section-level links (the homepage's #databases band) belong in footerLinks. `key` matches a page's `navKey` to render it as the current page.",
+  "nav": [
+    { "label": "Features",   "href": "/features.html",  "key": "features" },
+    { "label": "Docs",       "href": "/docs.html",      "key": "docs" },
+    { "label": "What's new", "href": "/changelog.html", "key": "changelog" }
+  ],
+  "navCta": { "label": "Download", "href": "/download.html", "key": "download" },
+
+  "footerLinks": [
+    { "label": "Home",       "href": "/" },
+    { "label": "Features",   "href": "/features.html" },
+    { "label": "Databases",  "href": "/index.html#databases" },
+    { "label": "Docs",       "href": "/docs.html" },
+    { "label": "What's new", "href": "/changelog.html" },
+    { "label": "Download",   "href": "/download.html" },
+    { "label": "GitHub",     "href": "https://github.com/downpick/downpick" },
+    { "label": "Security",   "href": "https://github.com/downpick/downpick/blob/main/SECURITY.md" }
+  ]
+}

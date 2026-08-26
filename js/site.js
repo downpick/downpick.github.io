@@ -11,15 +11,16 @@
 
   /* ---------- platform detection (home + download pages) ---------- */
 
-  var RELEASE = 'https://github.com/downpick/downpick/releases/download/v1.1.0/';
+  // The build writes the current release into window.DOWNPICK_RELEASE from
+  // _data/release.js, so no version string lives in this file. Without it the
+  // platform rendering is skipped and the markup keeps the defaults the build
+  // already put there — which come from the same data.
+  var DATA = window.DOWNPICK_RELEASE || {};
 
-  // [button label, sub-detail, download-page title, release filename]
-  var PLATFORMS = {
-    'mac-arm': ['macOS', 'Apple Silicon · .dmg', 'macOS · Apple Silicon', 'Downpick-1.1.0-arm64.dmg'],
-    'mac-intel': ['macOS', 'Intel · .dmg', 'macOS · Intel', 'Downpick-1.1.0.dmg'],
-    'win': ['Windows', 'x64 · .zip', 'Windows · x64', 'Downpick-1.1.0-win.zip'],
-    'linux': ['Linux', 'AppImage · x64', 'Linux · x64', 'Downpick-1.1.0.AppImage']
-  };
+  var RELEASE = DATA.base || '';
+
+  // key -> [button label, sub-detail, download-page title, release filename]
+  var PLATFORMS = DATA.platforms || {};
 
   function detectPlatform() {
     var ua = navigator.userAgent || '';
@@ -30,6 +31,7 @@
 
   function renderPlatform(platform) {
     var p = PLATFORMS[platform] || PLATFORMS['mac-arm'];
+    if (!p) return;
     each('[data-platform-name]', function (el) { el.textContent = p[0]; });
     each('[data-platform-detail]', function (el) { el.textContent = p[1]; });
     each('[data-platform-title]', function (el) { el.textContent = p[2]; });

@@ -1,0 +1,75 @@
+---
+sitemapPriority: "0.9"
+layout: base.njk
+permalink: /download.html
+navKey: download
+title: "Download — Downpick"
+description: "Download Downpick {version} for macOS, Windows, or Linux. Free, MIT licensed, no account needed."
+ogDescription: "Downpick {version} for macOS, Windows, and Linux. Free, MIT licensed, no account needed."
+pagesCss: true
+jsonld: true
+---
+<main id="main">
+
+  <section class="dl-head">
+    <h1 class="dl-title">Download Downpick</h1>
+    <p class="dl-lede">Version {{ release.version }} — free, MIT licensed, no account needed.</p>
+
+    <a class="dl-primary" href="{{ release.artifacts[0].url }}" data-platform-link>
+      <span class="dl-primary-inner">
+        <span>
+          <span class="dl-primary-eyebrow">Detected on this machine</span>
+          <span class="dl-primary-title" data-platform-title>{{ release.artifacts[0].title }}</span>
+          <span class="dl-primary-file" data-platform-file>{{ release.artifacts[0].file }}</span>
+        </span>
+        <span class="dl-primary-btn">Download</span>
+      </span>
+    </a>
+    <p class="dl-hint">Wrong guess? Pick your platform below.</p>
+  </section>
+
+  <section class="dl-section">
+    <h2 class="eyebrow">All platforms</h2>
+    <div class="dl-list">
+{%- for a in release.artifacts %}
+      <a class="dl-row" href="{{ a.url }}">
+        <span class="dl-os"><span class="dl-os-name">{{ a.os }}</span><span class="dl-os-arch">{{ a.arch }}</span></span>
+        <span class="dl-file">{{ a.file }} <span class="dl-size">{{ a.size }}</span></span>
+        <span class="dl-go">Download ↓</span>
+      </a>
+{%- endfor %}
+      <div class="dl-foot">
+        <span>Checksums and release notes</span>
+        <a href="https://github.com/downpick/downpick/releases">On GitHub →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="dl-cards">
+    <div class="dl-cards-grid">
+      <div class="card card--sm">
+        <h2 class="card-title">What you'll need</h2>
+        <p class="card-body">Windows 10 or later, macOS 12 or later, or a recent Linux desktop. Around 250 MB of disk.</p>
+      </div>
+      <div class="card card--sm">
+        <h2 class="card-title">First launch</h2>
+        <p class="card-body">You'll set a master password for the vault. There is no recovery — write it down somewhere safe.</p>
+      </div>
+      <div class="card card--sm">
+        <h2 class="card-title">The builds are unsigned</h2>
+        <p class="card-body">macOS blocks the first launch — open System Settings → Privacy &amp; Security and choose Open Anyway. On Windows, SmartScreen needs More info → Run anyway.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dl-note">
+    <div class="dl-note-box">
+      <div>
+        <h2 class="dl-note-title">Rather build it yourself?</h2>
+        <p class="dl-note-body">The source is on GitHub. Node 20 and two npm installs is the whole story.</p>
+      </div>
+      <a class="btn btn--outline" href="https://github.com/downpick/downpick">Build from source</a>
+    </div>
+  </section>
+
+</main>

@@ -1,0 +1,55 @@
+---
+sitemapPriority: "0.6"
+layout: base.njk
+permalink: /changelog.html
+navKey: changelog
+title: "What's new — Downpick"
+description: "Release notes for Downpick. Every version, what changed in it, and where to get it."
+pagesCss: true
+---
+<main id="main">
+
+  <section class="page-head">
+    <h1 class="page-title">What's new</h1>
+    <p class="page-lede">Every release, and what changed in it. Checksums and the full notes for each one are on GitHub.</p>
+  </section>
+
+  <section class="section section--flush">
+{%- for r in changelog %}
+    <div class="release">
+      <div class="release-meta">
+        <div class="release-version">{{ r.version }}</div>
+        <div class="release-date">{{ r.date }}</div>
+      </div>
+      <div class="release-body">
+        <h2 class="release-title">{{ r.title }}</h2>
+        <ul class="release-notes">
+{%- for note in r.notes %}
+          <li><span class="dash" aria-hidden="true">—</span> {{ note | safe }}</li>
+{%- endfor %}
+        </ul>
+        <p class="release-links">
+{%- if loop.first %}
+          <a href="/download.html">Download {{ r.version }}</a>
+          <a href="{{ site.releases }}/tag/v{{ r.version }}">Release notes and checksums →</a>
+{%- else %}
+          <a href="{{ site.releases }}/tag/v{{ r.version }}">Download {{ r.version }}, notes and checksums →</a>
+{%- endif %}
+        </p>
+      </div>
+    </div>
+{%- endfor %}
+
+  </section>
+
+  <section class="section">
+    <div class="dl-note-box">
+      <div>
+        <h2 class="dl-note-title">Watching for the next one</h2>
+        <p class="dl-note-body">Downpick has no auto-updater — it will not check for versions or phone home. Watch the repository on GitHub to hear about a release.</p>
+      </div>
+      <a class="btn btn--outline" href="https://github.com/downpick/downpick/releases">Releases on GitHub</a>
+    </div>
+  </section>
+
+</main>

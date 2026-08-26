@@ -1,0 +1,13 @@
+{
+  "name": "downpick.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Downpick website.",
+  "scripts": {
+    "dev": "eleventy --serve --port=8000",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  }
+}
