@@ -1,0 +1,46 @@
+{
+  "sections": [
+    {
+      "id": "getting-started",
+      "label": "Getting started"
+    },
+    {
+      "id": "connections",
+      "label": "Connections"
+    },
+    {
+      "id": "running-queries",
+      "label": "Running queries"
+    },
+    {
+      "id": "vault",
+      "label": "The vault"
+    },
+    {
+      "id": "settings",
+      "label": "Settings"
+    },
+    {
+      "id": "ai-providers",
+      "label": "AI providers"
+    },
+    {
+      "id": "shortcuts",
+      "label": "Keyboard shortcuts"
+    },
+    {
+      "id": "files",
+      "label": "Where files live"
+    }
+  ],
+  "external": [
+    {
+      "href": "https://github.com/downpick/downpick/blob/main/SECURITY.md",
+      "label": "Full security design ↗"
+    },
+    {
+      "href": "https://github.com/downpick/downpick/issues",
+      "label": "Report a problem ↗"
+    }
+  ]
+}

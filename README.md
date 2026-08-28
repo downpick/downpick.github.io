@@ -31,6 +31,10 @@ _data/release.js        the current release — see "Shipping a new version"
 _data/changelog.json    one entry per release, newest first
 _data/site.json         name, URLs, and the header and footer link lists
 _data/features.json     the feature list inside the JSON-LD block
+_data/docsNav.json      the docs sidebar
+_data/settings.json     the docs Settings tables
+_data/shortcuts.json    the docs keyboard shortcuts table
+_data/files.json        the docs "where files live" table
 
 src/*.njk               one file per page: front matter, then the page body
 src/_includes/base.njk  <head>, <body> shell, and the release data blob
@@ -70,6 +74,29 @@ combined link. Note bodies may contain inline HTML.
 Note there is no Windows `.exe` installer: `docs/releasing.md` in the app
 repository explains that the nsis target can't be built on Apple Silicon, so the
 release ships `Downpick-<version>-win.zip` instead.
+
+## Editing the docs
+
+The prose in `src/docs.njk` is plain HTML. The repeating tables are data:
+
+- **`_data/shortcuts.json`** — one entry per row: `keys` is the macOS spelling,
+  `win` the Windows one, and `action` the description. Omit `win` when the
+  shortcut is the same on both, and no `data-mac`/`data-win` attributes are
+  written for that row.
+- **`_data/settings.json`** — the Settings sections, in order. Each has a
+  `group` heading and its `rows` of `name`, `meta` and `body`.
+- **`_data/files.json`** — the "where files live" rows: `path` and `body`.
+- **`_data/docsNav.json`** — the sidebar. `sections` must match the
+  `<section id="...">` ids in `src/docs.njk`; the build fails with
+  `docs sidebar links to missing section id(s): ...` if one doesn't, so a
+  sidebar link can never scroll nowhere.
+
+`body` and `action` fields may contain inline HTML — `<span class="mono">`,
+links, and so on.
+
+The numbered `numstep` blocks are left as HTML on purpose: each body is a full
+paragraph of prose with inline markup, which reads better in the template than
+as an escaped string in a data file.
 
 ## Adding a page
 

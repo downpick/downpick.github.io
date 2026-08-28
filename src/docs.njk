@@ -14,18 +14,14 @@ pagesCss: true
     <nav aria-label="Documentation">
       <p class="docs-nav-title">Documentation</p>
       <div class="docs-nav-list">
-        <a href="#getting-started">Getting started</a>
-        <a href="#connections">Connections</a>
-        <a href="#running-queries">Running queries</a>
-        <a href="#vault">The vault</a>
-        <a href="#settings">Settings</a>
-        <a href="#ai-providers">AI providers</a>
-        <a href="#shortcuts">Keyboard shortcuts</a>
-        <a href="#files">Where files live</a>
+{%- for s in docsNav.sections %}
+        <a href="#{{ s.id }}">{{ s.label }}</a>
+{%- endfor %}
       </div>
       <div class="docs-nav-ext">
-        <a href="https://github.com/downpick/downpick/blob/main/SECURITY.md">Full security design ↗</a>
-        <a href="https://github.com/downpick/downpick/issues">Report a problem ↗</a>
+{%- for link in docsNav.external %}
+        <a href="{{ link.href }}">{{ link.label }}</a>
+{%- endfor %}
       </div>
     </nav>
   </aside>
@@ -113,48 +109,21 @@ pagesCss: true
       <h2 class="docs-h2">Settings</h2>
       <p class="docs-p docs-p--wide">Open Settings with the <span class="mono">⚙</span> button at the right end of the status bar, or <span class="mono" data-mac="Cmd+," data-win="Ctrl+,">Cmd+,</span>. There are three sections.</p>
 
-      <p class="docs-eyebrow">General</p>
-      <div class="deftable deftable--gap">
-        <div class="defrow">
-          <div>
-            <div class="defrow-name">Restore open tabs on launch</div>
-            <div class="defrow-meta">on by default</div>
-          </div>
-          <p class="defrow-body">Reopens the query tabs you had open last time. Turn it off if your query text is sensitive — the tabs are stored in plain text.</p>
-        </div>
-        <div class="defrow">
-          <div>
-            <div class="defrow-name">Query timeout</div>
-            <div class="defrow-meta">0–3600s · default 30s</div>
-          </div>
-          <p class="defrow-body">Cancels a query still running after this long. Set it to 0 for no limit.</p>
-        </div>
-      </div>
+{%- for g in settings %}
 
-      <p class="docs-eyebrow">Security</p>
+      <p class="docs-eyebrow">{{ g.group }}</p>
       <div class="deftable deftable--gap">
+{%- for row in g.rows %}
         <div class="defrow">
           <div>
-            <div class="defrow-name">Vault file path</div>
-            <div class="defrow-meta">~/.downpick/vault.enc</div>
+            <div class="defrow-name">{{ row.name }}</div>
+            <div class="defrow-meta">{{ row.meta }}</div>
           </div>
-          <p class="defrow-body">Where the encrypted vault lives — point it at an encrypted drive if you like. Must include the filename. Changing it locks the current vault; the file at the new path has its own master password, and one is created if nothing is there yet.</p>
+          <p class="defrow-body">{{ row.body | safe }}</p>
         </div>
-        <div class="defrow">
-          <div>
-            <div class="defrow-name">Change master password</div>
-            <div class="defrow-meta">no recovery</div>
-          </div>
-          <p class="defrow-body">Re-encrypts the vault key under a new password and deletes the previous backup file, which is still readable with the old password.</p>
-        </div>
-        <div class="defrow">
-          <div>
-            <div class="defrow-name">Auto-lock</div>
-            <div class="defrow-meta">0–1440 min · default off</div>
-          </div>
-          <p class="defrow-body">Re-locks the vault and closes every open connection after this much inactivity. It tracks app activity rather than mouse movement, so a long query is never interrupted by its own timer.</p>
-        </div>
+{%- endfor %}
       </div>
+{%- endfor %}
 
       <p class="docs-eyebrow">AI providers</p>
       <p class="docs-p docs-p--last">Covered in full below. This section saves each change as you make it, so it has a plain <span class="strong-inline">Close</span> rather than a Save button.</p>
@@ -236,38 +205,12 @@ pagesCss: true
       <h2 class="docs-h2">Keyboard shortcuts</h2>
       <p class="docs-p">Everything below is also on the application menu, apart from the Ask AI box.</p>
       <div class="deftable kbdtable">
+{%- for k in shortcuts %}
         <div class="defrow">
-          <div class="kbd" data-mac="Cmd+Enter · F5" data-win="Ctrl+Enter · F5">Cmd+Enter · F5</div>
-          <div class="kbd-action">Run the query, or just the selected text</div>
+          <div class="kbd"{% if k.win %} data-mac="{{ k.keys }}" data-win="{{ k.win }}"{% endif %}>{{ k.keys }}</div>
+          <div class="kbd-action">{{ k.action | safe }}</div>
         </div>
-        <div class="defrow">
-          <div class="kbd" data-mac="Cmd+Shift+Enter" data-win="Ctrl+Shift+Enter">Cmd+Shift+Enter</div>
-          <div class="kbd-action">Cancel the running query</div>
-        </div>
-        <div class="defrow">
-          <div class="kbd">Shift+Alt+F</div>
-          <div class="kbd-action">Format the query</div>
-        </div>
-        <div class="defrow">
-          <div class="kbd" data-mac="Cmd+N" data-win="Ctrl+N">Cmd+N</div>
-          <div class="kbd-action">New connection</div>
-        </div>
-        <div class="defrow">
-          <div class="kbd" data-mac="Cmd+," data-win="Ctrl+,">Cmd+,</div>
-          <div class="kbd-action">Open Settings</div>
-        </div>
-        <div class="defrow">
-          <div class="kbd" data-mac="Cmd+Shift+," data-win="Ctrl+Shift+,">Cmd+Shift+,</div>
-          <div class="kbd-action">Open Settings, straight to AI providers</div>
-        </div>
-        <div class="defrow">
-          <div class="kbd" data-mac="Cmd+L" data-win="Ctrl+L">Cmd+L</div>
-          <div class="kbd-action">Lock the vault</div>
-        </div>
-        <div class="defrow">
-          <div class="kbd">Enter · Shift+Enter</div>
-          <div class="kbd-action">In the Ask AI box: send the question / add a newline</div>
-        </div>
+{%- endfor %}
       </div>
     </section>
 
@@ -275,18 +218,12 @@ pagesCss: true
       <h2 class="docs-h2">Where files live</h2>
       <p class="docs-p">Downpick keeps everything in one folder in your home directory. Nothing goes to a server.</p>
       <div class="deftable">
+{%- for file in files %}
         <div class="filerow">
-          <div class="filerow-path">~/.downpick/vault.enc</div>
-          <div class="filerow-body">The encrypted vault: connections, database passwords, AI keys. A previous copy is kept as <span class="mono">vault.enc.bak</span>.</div>
+          <div class="filerow-path">{{ file.path }}</div>
+          <div class="filerow-body">{{ file.body | safe }}</div>
         </div>
-        <div class="filerow">
-          <div class="filerow-path">~/.downpick/settings.json</div>
-          <div class="filerow-body">Vault path, query timeout, and auto-lock. Holds no secrets, so it's plain text.</div>
-        </div>
-        <div class="filerow">
-          <div class="filerow-path">~/.downpick/chats.db</div>
-          <div class="filerow-body">Your saved <a href="#ai-providers">Ask AI conversations</a> — questions and answers, in plain text and outside the vault. Clear them from the history in the AI panel.</div>
-        </div>
+{%- endfor %}
       </div>
       <p class="docs-fine">Your open tabs are a separate, in-app preference and are stored in plain text — turn off tab restoration if your query text is sensitive.</p>
     </section>

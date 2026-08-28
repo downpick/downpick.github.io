@@ -20,6 +20,21 @@ module.exports = function (eleventyConfig) {
       release.tag + '/' + file;
   });
 
+  // The docs sidebar is a data file, and its section ids have to match the
+  // sections the page actually renders. Fail the build rather than ship a
+  // sidebar link that scrolls nowhere.
+  eleventyConfig.addTransform('checkDocsAnchors', function (content) {
+    if (!(this.page.outputPath || '').endsWith('docs.html')) return content;
+    const ids = new Set([...content.matchAll(/<section id="([^"]+)"/g)].map(m => m[1]));
+    const missing = require('./_data/docsNav.json').sections
+      .map(s => s.id)
+      .filter(id => !ids.has(id));
+    if (missing.length) {
+      throw new Error('docs sidebar links to missing section id(s): ' + missing.join(', '));
+    }
+    return content;
+  });
+
   return {
     dir: {
       input: 'src',

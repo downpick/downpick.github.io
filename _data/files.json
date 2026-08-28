@@ -1,0 +1,14 @@
+[
+  {
+    "path": "~/.downpick/vault.enc",
+    "body": "The encrypted vault: connections, database passwords, AI keys. A previous copy is kept as <span class=\"mono\">vault.enc.bak</span>."
+  },
+  {
+    "path": "~/.downpick/settings.json",
+    "body": "Vault path, query timeout, and auto-lock. Holds no secrets, so it's plain text."
+  },
+  {
+    "path": "~/.downpick/chats.db",
+    "body": "Your saved <a href=\"#ai-providers\">Ask AI conversations</a> — questions and answers, in plain text and outside the vault. Clear them from the history in the AI panel."
+  }
+]
