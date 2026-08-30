@@ -4,7 +4,7 @@ layout: base.njk
 permalink: /docs.html
 navKey: docs
 title: "Documentation — Downpick"
-description: "Downpick {version} documentation: getting started, connections, running queries, the encrypted vault, settings, AI providers, keyboard shortcuts, and where files live."
+description: "Downpick {version} documentation: getting started, connections, Oracle, running queries, the encrypted vault, settings, AI providers, keyboard shortcuts, and where files live."
 ogDescription: "Everything Downpick does, and the handful of decisions it asks you to make."
 pagesCss: true
 ---
@@ -46,14 +46,14 @@ pagesCss: true
           <div class="numstep-n">02</div>
           <div>
             <h3 class="numstep-t">Set a master password</h3>
-            <p class="numstep-b">The first launch asks you to choose one. It's the only password Downpick will ever ask for, and it unlocks everything else. Write it down somewhere safe — see <a href="#vault">the vault</a> for why.</p>
+            <p class="numstep-b">The first launch asks you to choose one. It's the only password Downpick will ever ask for, and it unlocks everything else. Write it down somewhere safe — see <a href="#vault">the vault</a> for why. The same screen lets you say where the vault file goes, or open one you already have from another machine; leave it alone and it lands in your home directory.</p>
           </div>
         </div>
         <div class="numstep">
           <div class="numstep-n">03</div>
           <div>
             <h3 class="numstep-t">Add a connection</h3>
-            <p class="numstep-b">Press <span class="mono">+</span> at the top of the explorer. Pick the engine, then paste in the host, port, database, user, and password your database administrator gave you. Downpick tests the connection before saving it.</p>
+            <p class="numstep-b">Press <span class="mono">+</span> at the top of the explorer. Pick the engine, then paste in the host, port, user, and password your database administrator gave you. On <a href="#oracle">Oracle</a> there's one extra field, the service name. Downpick tests the connection before saving it.</p>
           </div>
         </div>
         <div class="numstep">
@@ -68,7 +68,7 @@ pagesCss: true
 
     <section id="connections" class="docs-section">
       <h2 class="docs-h2">Connections</h2>
-      <p class="docs-p">Each connection is one server. Add as many as you like — they all stay in the explorer, and more than one can be live at once. The dot beside the name is grey when idle and green when connected.</p>
+      <p class="docs-p">Each connection is one server — PostgreSQL, SQL Server, Oracle, or MongoDB. Add as many as you like — they all stay in the explorer, and more than one can be live at once. The dot beside the name is grey when idle and green when connected.</p>
       <p class="docs-p">The <span class="mono">⋮</span> menu on a connection edits it, disconnects it, or removes it. Removing a connection deletes its stored password from the vault too.</p>
       <p class="docs-p">On a connection that's already up, the same menu has <span class="strong-inline">Refresh databases</span>, which re-reads the server's database list for databases created or dropped outside Downpick. It leaves the connection and the schemas you've already loaded in place, and a refresh that fails says so without marking the connection disconnected.</p>
       <div class="note-box">
@@ -77,9 +77,39 @@ pagesCss: true
       </div>
     </section>
 
+    <section id="oracle" class="docs-section">
+      <h2 class="docs-h2">Oracle</h2>
+      <p class="docs-p">Oracle needs nothing installed first. There is no Instant Client to download, no ODBC or JDBC driver, and no <span class="mono">ORACLE_HOME</span> to set — Downpick talks to the database directly. Two things follow from that, and one from Oracle itself.</p>
+
+      <h3 class="docs-h3">Oracle 12.1 or newer</h3>
+      <p class="docs-p docs-p--tight">11g and older can't be reached at all. Neither can a server configured for Oracle's Native Network Encryption — <span class="mono">SQLNET.ENCRYPTION_SERVER = REQUIRED</span> will refuse the connection. Ordinary TLS is fine, including Autonomous Database over mTLS, though the wallet has to be in PEM form rather than <span class="mono">cwallet.sso</span>.</p>
+
+      <h3 class="docs-h3">A service name, not a database</h3>
+      <p class="docs-p docs-p--tight">Every other engine will tell you what databases it has. Oracle won't — the service is part of the address, so the connection dialog asks for it and remembers it with the rest of the connection. <span class="mono">lsnrctl status</span> on the server lists the services it serves. Get it wrong and Oracle answers <span class="mono">ORA-12514</span>, which Downpick explains and points back at the field.</p>
+
+      <h3 class="docs-h3">Your schemas, not Oracle's</h3>
+      <p class="docs-p docs-p--last">The explorer lists application schemas only, so <span class="mono">SYS</span>, <span class="mono">SYSTEM</span>, <span class="mono">XDB</span> and the rest of Oracle's own accounts stay out of the tree. Yours sorts first.</p>
+
+      <div class="danger-box">
+        <h3 class="danger-title">⚠ Each statement commits as it runs</h3>
+        <p class="danger-body">Oracle runs one statement per call, so a script is split and run in order, stopping at the first failure — with everything that already ran listed in <a href="#running-queries">Messages</a>. Those statements are committed. A five-statement script is five transactions, and a failure at the third does not roll back the first two. This differs from SQL*Plus, SQL Developer, and Toad, which default to manual commit. Downpick has no Commit or Rollback for any engine yet; the confirmation before an unqualified UPDATE or DELETE is the safety net until it does.</p>
+      </div>
+
+      <div class="note-box">
+        <h3 class="note-title">Two notes on types</h3>
+        <p class="note-body">An unconstrained Oracle <span class="mono">NUMBER</span> holds up to 38 digits and the grid carries about 15, so a very large or very precise value can lose precision on the way in. And <span class="mono">DATE</span> and <span class="mono">TIMESTAMP</span> carry no time zone, so they're read in the machine's zone and shown as UTC — a <span class="mono">DATE '2026-01-15'</span> reads as <span class="mono">2026-01-15T03:00:00.000Z</span> on a UTC−3 machine. PostgreSQL <span class="mono">timestamp</span> columns already behave this way here.</p>
+      </div>
+    </section>
+
     <section id="running-queries" class="docs-section">
       <h2 class="docs-h2">Running queries</h2>
       <p class="docs-p">Press <span class="mono" data-mac="Cmd+Enter" data-win="Ctrl+Enter">Cmd+Enter</span> to run the tab, or just the part of it you've selected. While it runs, the results area shows how long it has been going, updating as it goes, next to a <span class="strong-inline">Cancel</span> button — <span class="mono" data-mac="Cmd+Shift+Enter" data-win="Ctrl+Shift+Enter">Cmd+Shift+Enter</span> does the same thing. A query still going after the timeout in <a href="#settings">Settings</a> is cancelled for you.</p>
+
+      <h3 class="docs-h3">One statement at a time</h3>
+      <p class="docs-p docs-p--last">In a script of several statements, put the cursor inside the one you want and press <span class="mono">F9</span> — <span class="strong-inline">Query ▸ Run Statement</span> — to run only that one, without selecting it first.</p>
+
+      <h3 class="docs-h3">Being told when it's done</h3>
+      <p class="docs-p docs-p--last">A query that takes a while announces itself when it finishes: a system notification if you've switched away from Downpick, an in-app notice if you're still looking at it, never both. Clicking the system one brings the window forward and opens the tab the query came from. Queries faster than the threshold in <a href="#settings">Settings</a> pass in silence, as do ones you cancelled and ones the database rejected — you're right there for those. This is on by default; turn it off in the same place.</p>
 
       <h3 class="docs-h3">Results and Messages</h3>
       <p class="docs-p docs-p--tight">Rows land in <span class="strong-inline">Results</span>. Statements that return no rows — an UPDATE, a DELETE, a CREATE INDEX, the DDL half of a batch — land in <span class="strong-inline">Messages</span> instead, one line per statement in the order they ran, each saying what it did and how many rows it affected. The total time is at the bottom.</p>
@@ -89,6 +119,10 @@ pagesCss: true
     <section id="vault" class="docs-section">
       <h2 class="docs-h2">The vault</h2>
       <p class="docs-p">The vault is a single encrypted file on your computer that holds every secret Downpick knows: your connection details, your database passwords, and your AI provider keys. Nothing sensitive is stored anywhere else, and none of it is stored in plain text.</p>
+
+      <h3 class="docs-h3">Where it lives</h3>
+      <p class="docs-p docs-p--tight">By default, <span class="mono">~/.downpick/vault.enc</span>. You can put it somewhere else — a removable disk, or an encrypted volume — either on first launch or later from <a href="#settings">Settings</a>, where <span class="strong-inline">Browse…</span> opens a vault you already have and <span class="strong-inline">New location…</span> places a new one. The unlock screen offers the same choice, so a vault carried over from another machine can be opened without editing anything first.</p>
+      <p class="docs-p docs-p--last">The path is remembered in <span class="mono">~/.downpick/settings.json</span>, and only once a vault at that path has actually been created or unlocked — a mistyped path, or a file that turns out not to be a vault, never survives a restart. Moving the vault locks the one currently open; the file at the new path has its own master password.</p>
 
       <h3 class="docs-h3">How it's protected</h3>
       <p class="docs-p docs-p--tight">Your master password is put through a deliberately slow calculation to derive a key, and that key encrypts the key that encrypts the file. In practice that means two things you'll notice: unlocking takes a moment, and changing your master password is instant — it re-wraps a small key rather than re-encrypting everything.</p>
@@ -107,7 +141,7 @@ pagesCss: true
 
     <section id="settings" class="docs-section">
       <h2 class="docs-h2">Settings</h2>
-      <p class="docs-p docs-p--wide">Open Settings with the <span class="mono">⚙</span> button at the right end of the status bar, or <span class="mono" data-mac="Cmd+," data-win="Ctrl+,">Cmd+,</span>. There are three sections.</p>
+      <p class="docs-p docs-p--wide">Open Settings with the <span class="mono">⚙</span> button at the right end of the status bar, or <span class="mono" data-mac="Cmd+," data-win="Ctrl+,">Cmd+,</span>. There are four sections.</p>
 
 {%- for g in settings %}
 
@@ -172,6 +206,11 @@ pagesCss: true
         </div>
       </div>
 
+      <h3 class="docs-h3 docs-h3--flush">Working on the query you already have</h3>
+      <p class="docs-p docs-p--tight">The assistant can read the query open in the tab, so it isn't limited to writing one from nothing. "Edit this to group by month", "what does this query do?", and "why is this slow?" all work on what you've written.</p>
+      <p class="docs-p docs-p--tight">Select part of the query first and it sees only that fragment — and inserting its answer replaces only that fragment, leaving the rest of the query alone. Either way, <span class="mono" data-mac="Cmd+Z" data-win="Ctrl+Z">Cmd+Z</span> puts back what you had. A question that only wants an explanation comes back as prose with nothing to insert, because you asked what your query does, not for a different one.</p>
+      <p class="docs-p docs-p--last">It reads the editor only when the question calls for it, so asking something unrelated doesn't send your query anywhere. See <a href="#leaves">what leaves your machine</a> below — a query is not only structure, and a value you typed into a WHERE clause travels with it.</p>
+
       <h3 class="docs-h3 docs-h3--flush">Conversation history</h3>
       <p class="docs-p docs-p--tight">Conversations are kept. Each query tab has its own, so switching tabs switches the thread, and the <span class="strong-inline">history</span> button in the panel header lists every past chat — newest first, each labelled with the connection and database it was asked against, so a question you put to staging is findable from prod. Click one to pick it back up. The same place deletes a single conversation or clears them all.</p>
       <p class="docs-p docs-p--tight">They're saved to <span class="mono">~/.downpick/chats.db</span> <span class="strong-inline">in plain text</span> — not in the encrypted vault. Your questions and the assistant's answers sit in that file readable by anything that can read your home directory, so treat it the way you'd treat a query history file. Clearing the history from the panel removes them.</p>
@@ -179,7 +218,7 @@ pagesCss: true
       <h3 class="docs-h3 docs-h3--flush">Running a model on your own machine</h3>
       <p class="docs-p">If you'd rather nothing left your computer at all, add an OpenAI-compatible provider pointing at a local server — for example <span class="mono">http://localhost:11434/v1</span> for Ollama.</p>
 
-      <h3 class="docs-h3 docs-h3--flush">What leaves your machine</h3>
+      <h3 class="docs-h3 docs-h3--flush" id="leaves">What leaves your machine</h3>
       <div class="leave">
         <div class="leave-cols">
           <div class="leave-col leave-col--first">
@@ -187,6 +226,7 @@ pagesCss: true
             <div class="leave-items">
               <div>Your question, and the conversation so far</div>
               <div>The <em class="leave-em">names</em> of the schemas, tables, and columns it looks up</div>
+              <div>The query in your editor — but <em class="leave-em">only</em> when the question is about it, and only the selection if you have one</div>
             </div>
           </div>
           <div class="leave-col">
@@ -197,7 +237,7 @@ pagesCss: true
             </div>
           </div>
         </div>
-        <div class="leave-foot">On MongoDB, describing a collection samples up to 50 documents to learn field names and types. The sampled values are read outside the window and discarded — only names and types reach the model.</div>
+        <div class="leave-foot">On MongoDB, describing a collection samples up to 50 documents to learn field names and types. The sampled values are read outside the window and discarded — only names and types reach the model. Editor text past about 20,000 characters is truncated before it is sent.</div>
       </div>
     </section>
 

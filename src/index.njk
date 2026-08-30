@@ -4,8 +4,8 @@ layout: base.njk
 permalink: /index.html
 canonical: /
 title: "Downpick — all your databases, one window"
-description: "Downpick is a free, open-source desktop client for PostgreSQL, SQL Server, and MongoDB. Schema explorer, query editor, and a fast results grid — installed on your machine, with an encrypted credential vault."
-ogDescription: "A free, open-source desktop client for PostgreSQL, SQL Server, and MongoDB."
+description: "Downpick is a free, open-source desktop client for PostgreSQL, SQL Server, Oracle, and MongoDB. Schema explorer, query editor, and a fast results grid — installed on your machine, with an encrypted credential vault."
+ogDescription: "A free, open-source desktop client for PostgreSQL, SQL Server, Oracle, and MongoDB."
 jsonld: true
 ---
 <main id="main">
@@ -16,7 +16,7 @@ jsonld: true
       Version {{ release.version }} — free and open source
     </p>
     <h1 class="hero-title">All your databases, one window.</h1>
-    <p class="hero-sub">Downpick connects to PostgreSQL, SQL Server, and MongoDB, shows you what's in them, and runs your queries. It installs on your machine, keeps your passwords in an encrypted vault, and asks nothing of you beyond a password.</p>
+    <p class="hero-sub">Downpick connects to PostgreSQL, SQL Server, Oracle, and MongoDB, shows you what's in them, and runs your queries. It installs on your machine, keeps your passwords in an encrypted vault, and asks nothing of you beyond a password.</p>
     <div class="hero-cta">
       <a class="btn btn--accent btn--lg" href="/download.html">
         <span>Download for <span data-platform-name>macOS</span></span>
@@ -34,7 +34,7 @@ jsonld: true
 
   <section id="databases" class="section">
     <h2 class="eyebrow">Supported databases</h2>
-    <div class="db-grid">
+    <div class="db-grid db-grid--4">
       <div class="card">
         <div class="card-icon" aria-hidden="true">🐘</div>
         <h3 class="card-title">PostgreSQL</h3>
@@ -44,6 +44,11 @@ jsonld: true
         <div class="card-icon" aria-hidden="true">🗄️</div>
         <h3 class="card-title">SQL Server</h3>
         <p class="card-body">The same explorer and editor, against your Microsoft SQL Server instances.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon" aria-hidden="true">🔺</div>
+        <h3 class="card-title">Oracle</h3>
+        <p class="card-body">Nothing to install first — no Instant Client, no ORACLE_HOME. Oracle 12.1 and up.</p>
       </div>
       <div class="card">
         <div class="card-icon" aria-hidden="true">🍃</div>
@@ -94,6 +99,18 @@ jsonld: true
         <h3 class="feature-title">Refresh without reconnecting</h3>
         <p class="feature-body">Someone added a database while you were connected? Reload the list from the connection menu, connection intact.</p>
       </div>
+      <div class="feature">
+        <h3 class="feature-title">Told when it lands</h3>
+        <p class="feature-body">Go and do something else. A query that takes a while says so when it finishes — from the system if you've switched away, in the app if you haven't.</p>
+      </div>
+      <div class="feature">
+        <h3 class="feature-title">Just this statement</h3>
+        <p class="feature-body">A script full of statements, and you want the third one. Put the cursor in it and press F9 — no selecting first.</p>
+      </div>
+      <div class="feature">
+        <h3 class="feature-title">Oracle, with nothing to install</h3>
+        <p class="feature-body">No Instant Client, no ODBC or JDBC driver, no ORACLE_HOME. Downpick talks to Oracle 12.1 and later on its own.</p>
+      </div>
     </div>
     <p class="section-more"><a href="/features.html">All features →</a></p>
   </section>
@@ -104,6 +121,7 @@ jsonld: true
         <p class="eyebrow eyebrow--accent">✦ Ask AI</p>
         <h2 class="split-title">Describe the question. Get the query.</h2>
         <p class="split-body">Ask in plain language. The assistant reads your schema — the names of tables and columns, nothing more — and writes the query into the editor.</p>
+        <p class="split-body">It can read what's already in the editor too, so "what does this do?" and "group this by month" work on the query in front of you. Select part of it and that part is all it sees, and all it replaces.</p>
         <p class="split-body">It cannot run anything. Nothing happens until you press Run, and the confirmation prompts still apply.</p>
         <ul class="checklist">
           <li><span class="check" aria-hidden="true">✓</span> No row data ever leaves your machine</li>

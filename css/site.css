@@ -252,6 +252,9 @@ html { scroll-behavior: smooth; scroll-padding-top: 84px; }
   gap: var(--space-4);
 }
 
+/* Four supported databases on the home page; the 404 page's three keep the base. */
+.db-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
 .card {
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -368,6 +371,10 @@ html { scroll-behavior: smooth; scroll-padding-top: 84px; }
   color: var(--text-secondary);
   margin-bottom: var(--space-2);
 }
+/* The note is one flex item beside the hanging dash, never several. Notes may carry
+   inline markup, and without this wrapper every <span> in one becomes its own flex
+   item — laid out side by side with the gap between them rather than as a sentence. */
+.release-note-text { flex: 1; min-width: 0; }
 .dash { color: var(--text-dim); }
 
 /* ---------- closing CTA ---------- */
@@ -438,6 +445,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 84px; }
 /* ---------- responsive ---------- */
 
 @media (max-width: 1000px) {
+  .db-grid--4 { grid-template-columns: repeat(2, 1fr); }
   .split { grid-template-columns: 1fr; }
   .split-copy { border-right: 0; border-bottom: 1px solid var(--border); padding: var(--space-6) var(--space-5); }
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
@@ -458,7 +466,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 84px; }
   .hero-cta { margin-bottom: var(--space-7); }
   .section-title { font-size: 30px; }
 
-  .db-grid { grid-template-columns: 1fr; }
+  .db-grid, .db-grid--4 { grid-template-columns: 1fr; }
   .feature-grid { grid-template-columns: 1fr; }
 
   .release { grid-template-columns: 1fr; gap: var(--space-4); }

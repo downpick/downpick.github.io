@@ -1,15 +1,19 @@
 [
-  "Connect to PostgreSQL, SQL Server, and MongoDB at the same time",
+  "Connect to PostgreSQL, SQL Server, Oracle, and MongoDB at the same time",
+  "Oracle in Thin mode — no Instant Client, ODBC driver, or ORACLE_HOME to install",
   "Schema explorer down to columns and collection fields",
   "Query editor with syntax highlighting and autocomplete for SQL and MongoDB shell syntax",
+  "Run the whole tab, the selection, or just the statement under the cursor",
   "Ask AI writes queries from your schema and cannot execute anything",
+  "Ask AI reads the query open in the editor, or only the part you selected",
   "Ask AI conversations are saved per tab, with a history you can reopen or clear",
   "Virtualized results grid for large result sets",
   "Copy results as a table, or export to CSV or Excel",
-  "Encrypted credential vault with auto-lock",
+  "Encrypted credential vault with auto-lock, kept wherever you choose to put it",
   "Confirmation before UPDATE or DELETE with no WHERE clause",
   "Cancel a running query, or set a query timeout",
   "Live elapsed timer on a running query, with a cancel button",
+  "Notification when a long query finishes, in the app or from the system",
   "Messages view listing rows affected for statements that return no result set",
   "No account, no telemetry"
 ]

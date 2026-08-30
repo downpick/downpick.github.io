@@ -12,7 +12,7 @@
     "height": "1610",
     "alt": "Downpick running a query against a PostgreSQL database"
   },
-  "description": "A desktop database manager for PostgreSQL, SQL Server, and MongoDB, with an encrypted credential vault and an AI assistant that writes queries from your schema.",
+  "description": "A desktop database manager for PostgreSQL, SQL Server, Oracle, and MongoDB, with an encrypted credential vault and an AI assistant that writes queries from your schema.",
 
   "_comment": "nav: every item is a page, never a link into the middle of one. Section-level links (the homepage's #databases band) belong in footerLinks. `key` matches a page's `navKey` to render it as the current page.",
   "nav": [

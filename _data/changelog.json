@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.2.0",
+    "date": "30 August 2026",
+    "title": "Oracle, an assistant that reads your editor, and a nudge when the query lands",
+    "notes": [
+      "Oracle is the fourth engine. No Instant Client, no <span class=\"mono\">ORACLE_HOME</span>, nothing to install — the driver runs in Thin mode and talks to the database directly. Oracle 12.1 or newer, and the connection asks for a service name rather than a database, because it's the one engine whose databases can't be listed",
+      "Ask AI can read the query already open in the tab, so \"what does this do?\" and \"group this by month\" work on what you've written. Select part of it first and it sees only that fragment — and only that fragment is replaced when you insert the answer. <span class=\"mono\">Cmd+Z</span> undoes either",
+      "Downpick tells you when a long query finishes — a system notification if you've switched away, an in-app one if you haven't, never both. Off after a threshold you set, ten seconds by default, and never for a query you cancelled",
+      "<span class=\"strong-inline\">Query ▸ Run Statement</span> (<span class=\"mono\">F9</span>) runs just the statement under the cursor, without selecting it first",
+      "Choose where the vault lives from a file dialog — on first launch, or later in Settings. <span class=\"strong-inline\">Browse…</span> opens one you already have, <span class=\"strong-inline\">New location…</span> places a new one",
+      "Menu items that need an unlocked vault are greyed out while it's locked, so their shortcuts no longer fire into a screen that isn't there"
+    ]
+  },
+  {
     "version": "1.1.0",
     "date": "25 August 2026",
     "title": "Conversations that keep, and queries you can watch",

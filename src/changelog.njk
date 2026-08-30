@@ -25,7 +25,7 @@ pagesCss: true
         <h2 class="release-title">{{ r.title }}</h2>
         <ul class="release-notes">
 {%- for note in r.notes %}
-          <li><span class="dash" aria-hidden="true">—</span> {{ note | safe }}</li>
+          <li><span class="dash" aria-hidden="true">—</span> <span class="release-note-text">{{ note | safe }}</span></li>
 {%- endfor %}
         </ul>
         <p class="release-links">

@@ -15,12 +15,32 @@
     ]
   },
   {
+    "group": "Notifications",
+    "rows": [
+      {
+        "name": "Notify me when a query finishes",
+        "meta": "on by default",
+        "body": "Announces a finished query — a system notification if you've switched away from Downpick, an in-app notice if you haven't, never both. A query you cancelled, or one the database rejected, isn't announced: you're already looking at it. Clicking the system notification brings the window forward and opens the tab the query came from."
+      },
+      {
+        "name": "Only after n seconds",
+        "meta": "0–3600s · default 10s",
+        "body": "How long a query has to have run to be worth announcing. Set it to 0 to announce every one. A query stopped by the <span class=\"strong-inline\">Query timeout</span> above is exempt and always announced — being told when that limit trips is the point of setting it."
+      },
+      {
+        "name": "Send a test notification",
+        "meta": "ignores both settings above",
+        "body": "Raises one on demand. Your operating system also has to allow notifications from Downpick, and one it blocks is turned away silently — nothing inside the app can detect that, so firing one and looking is the only honest check."
+      }
+    ]
+  },
+  {
     "group": "Security",
     "rows": [
       {
         "name": "Vault file path",
         "meta": "~/.downpick/vault.enc",
-        "body": "Where the encrypted vault lives — point it at an encrypted drive if you like. Must include the filename. Changing it locks the current vault; the file at the new path has its own master password, and one is created if nothing is there yet."
+        "body": "Where the encrypted vault lives — point it at an encrypted drive if you like. <span class=\"strong-inline\">Browse…</span> opens a vault you already have and <span class=\"strong-inline\">New location…</span> chooses where a new one goes, or type the path yourself, filename included. Changing it locks the current vault; the file at the new path has its own master password, and one is created if nothing is there yet. The same choice is offered on first launch, before any vault exists."
       },
       {
         "name": "Change master password",

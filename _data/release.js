@@ -3,18 +3,18 @@
 // platform detection in js/site.js all read from here.
 //
 // To ship a new version: change `version`, `date` and `dateHuman`, update the
-// `size` on each artifact, and add an entry to _data/changelog.js.
+// `size` on each artifact, and add an entry to _data/changelog.json.
 
-const version = '1.1.0';
-const date = '2026-08-25';        // ISO, for JSON-LD and the sitemap
-const dateHuman = '25 August 2026';
+const version = '1.2.0';
+const date = '2026-08-30';        // ISO, for JSON-LD and the sitemap
+const dateHuman = '30 August 2026';
 
 // `suffix` is appended to `Downpick-<version>` to make the release filename.
 // `key` marks the four builds js/site.js can auto-detect; the zip duplicates
 // have none, so they only ever appear in the full table.
 const artifacts = [
   { os: 'macOS',   arch: 'Apple Silicon',      suffix: '-arm64.dmg',      size: '124 MB', key: 'mac-arm',   label: 'macOS',   detail: 'Apple Silicon · .dmg', title: 'macOS · Apple Silicon' },
-  { os: 'macOS',   arch: 'Intel',              suffix: '.dmg',            size: '128 MB', key: 'mac-intel', label: 'macOS',   detail: 'Intel · .dmg',         title: 'macOS · Intel' },
+  { os: 'macOS',   arch: 'Intel',              suffix: '.dmg',            size: '129 MB', key: 'mac-intel', label: 'macOS',   detail: 'Intel · .dmg',         title: 'macOS · Intel' },
   { os: 'macOS',   arch: 'zip, Apple Silicon', suffix: '-arm64-mac.zip',  size: '124 MB' },
   { os: 'macOS',   arch: 'zip, Intel',         suffix: '-mac.zip',        size: '129 MB' },
   { os: 'Windows', arch: 'x64',                suffix: '-win.zip',        size: '144 MB', key: 'win',       label: 'Windows', detail: 'x64 · .zip',           title: 'Windows · x64' },

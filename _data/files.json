@@ -5,7 +5,7 @@
   },
   {
     "path": "~/.downpick/settings.json",
-    "body": "Vault path, query timeout, and auto-lock. Holds no secrets, so it's plain text."
+    "body": "Vault path, query timeout, <a href=\"#settings\">notification preferences</a>, and auto-lock. Holds no secrets, so it's plain text."
   },
   {
     "path": "~/.downpick/chats.db",

@@ -5,6 +5,10 @@
     "action": "Run the query, or just the selected text"
   },
   {
+    "keys": "F9",
+    "action": "Run only the statement under the cursor"
+  },
+  {
     "keys": "Cmd+Shift+Enter",
     "win": "Ctrl+Shift+Enter",
     "action": "Cancel the running query"

@@ -9,6 +9,10 @@
       "label": "Connections"
     },
     {
+      "id": "oracle",
+      "label": "Oracle"
+    },
+    {
       "id": "running-queries",
       "label": "Running queries"
     },

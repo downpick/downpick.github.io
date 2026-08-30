@@ -4,7 +4,7 @@ layout: base.njk
 permalink: /features.html
 navKey: features
 title: "Features — Downpick"
-description: "What Downpick does, in order: connect to every server at once, see the shape of your data, write or describe a query, and take the results away as a copy, CSV, or Excel."
+description: "What Downpick does, in order: connect to every PostgreSQL, SQL Server, Oracle, and MongoDB server at once, see the shape of your data, write or describe a query, and take the results away as a copy, CSV, or Excel."
 ogDescription: "Connect, look, ask, take away — what Downpick does."
 pagesCss: true
 ---
@@ -20,17 +20,18 @@ pagesCss: true
       <div class="panel">
         <p class="step-eyebrow">01 · Connect</p>
         <h2 class="step-title">Every server, open at once</h2>
-        <p class="step-body">Add a connection once and it stays in the sidebar — staging next to production next to the local copy, each with a dot telling you whether it's live. Passwords go into the vault, not into a config file. If a database appears while you're connected, reload the list from the connection's menu without dropping the connection.</p>
+        <p class="step-body">Four engines — PostgreSQL, SQL Server, Oracle, MongoDB — and as many of each as you like. Add a connection once and it stays in the sidebar, staging next to production next to the local copy, each with a dot telling you whether it's live. Passwords go into the vault, not into a config file. If a database appears while you're connected, reload the list from the connection's menu without dropping the connection.</p>
         <div class="mock">
           <div class="mock-line">⬡ Ridgeline Analytics (staging) <span class="mock-dim">·</span> <span class="mock-dim">idle</span></div>
           <div class="mock-line mock-line--strong">⬡ Ridgeline Coffee (local) <span class="mock-dim">·</span> <span class="mock-ok">connected</span></div>
           <div class="mock-line">⬡ Telemetry <span class="mock-dim">·</span> <span class="mock-dim">idle</span></div>
+          <div class="mock-line">⬡ Warehouse (Oracle) <span class="mock-dim">·</span> <span class="mock-dim">idle</span></div>
         </div>
       </div>
       <div class="panel">
         <p class="step-eyebrow">02 · Look</p>
         <h2 class="step-title">See the shape of your data</h2>
-        <p class="step-body">The explorer goes all the way down — databases, schemas, tables, columns and their types. On MongoDB, collections and their fields. Double-click any table to query it.</p>
+        <p class="step-body">The explorer goes all the way down — databases, schemas, tables, columns and their types. On MongoDB, collections and their fields. On Oracle, your own schemas rather than Oracle's: <span class="mono">SYS</span>, <span class="mono">SYSTEM</span> and the rest stay out of the tree. Double-click any table to query it.</p>
         <div class="mock">
           <div class="mock-line mock-line--strong">▾ ▦ coffees</div>
           <div class="mock-line mock-split"><span>&nbsp;&nbsp;— name</span><span class="mock-dim">text</span></div>
@@ -46,8 +47,8 @@ pagesCss: true
       <div>
         <p class="step-eyebrow">03 · Ask</p>
         <h2 class="step-title">Write it, or describe it</h2>
-        <p class="step-body step-body--mid">The editor highlights and autocompletes SQL and MongoDB shell syntax, formats on a keystroke, and runs the selection if you've selected something.</p>
-        <p class="step-body step-body--last">Or press <span class="accent-inline">✦ Ask AI</span> and say what you're after. It reads your table and column names, writes the query, and waits. Running it is still your call — and a DELETE with no WHERE clause still asks twice. Every conversation is saved, so the question you asked last week is one click away in the history.</p>
+        <p class="step-body step-body--mid">The editor highlights and autocompletes SQL and MongoDB shell syntax, formats on a keystroke, and runs the selection if you've selected something — or just the statement under the cursor, on <span class="mono">F9</span>.</p>
+        <p class="step-body step-body--last">Or press <span class="accent-inline">✦ Ask AI</span> and say what you're after. It reads your table and column names, writes the query, and waits. It reads the query you've already written too, so "what does this do?" and "group this by month" work on what's in front of you — select a fragment and that fragment is all it sees, and all it replaces. Running anything is still your call, and a DELETE with no WHERE clause still asks twice. Every conversation is saved, so the question you asked last week is one click away in the history.</p>
       </div>
       <img src="/assets/ai.gif" alt="Ask AI reading the schema and writing a query into the editor"
              width="1440" height="805" loading="lazy" decoding="async" data-fallback="Ask AI demo">
@@ -91,8 +92,12 @@ pagesCss: true
     <h2 class="eyebrow">And the rest</h2>
     <div class="rest-grid">
       <div class="rest">
-        <h3 class="rest-title">An encrypted vault</h3>
-        <p class="rest-body">Every connection password is encrypted behind one master password, locked on launch and re-locked after a period of inactivity you choose.</p>
+        <h3 class="rest-title">Oracle, with nothing to install</h3>
+        <p class="rest-body">No Instant Client, no ODBC or JDBC driver, no ORACLE_HOME. Downpick speaks to Oracle 12.1 and later by itself — it asks for a service name, because Oracle is the one engine whose databases can't be listed.</p>
+      </div>
+      <div class="rest">
+        <h3 class="rest-title">An encrypted vault, wherever you want it</h3>
+        <p class="rest-body">Every connection password is encrypted behind one master password, locked on launch and re-locked after a period of inactivity you choose. Keep the file where it lands or put it on an encrypted volume — the first launch offers the choice, and Settings can move it later.</p>
       </div>
       <div class="rest">
         <h3 class="rest-title">Cancel and timeouts</h3>
@@ -129,6 +134,18 @@ pagesCss: true
       <div class="rest">
         <h3 class="rest-title">Ask AI history</h3>
         <p class="rest-body">Conversations are saved, one per tab, and the history lists them all across every connection. Resume one, or clear them all at once.</p>
+      </div>
+      <div class="rest">
+        <h3 class="rest-title">A nudge when it finishes</h3>
+        <p class="rest-body">Start something slow and go elsewhere. Downpick raises a system notification when the window is in the background, an in-app one when it isn't, and nothing at all for a query that came back before the threshold you set.</p>
+      </div>
+      <div class="rest">
+        <h3 class="rest-title">One statement out of many</h3>
+        <p class="rest-body">Put the cursor inside a statement in a longer script and press F9 to run only that one. It's on the Query menu, next to Run and Cancel.</p>
+      </div>
+      <div class="rest">
+        <h3 class="rest-title">No transaction control, yet</h3>
+        <p class="rest-body">Worth saying plainly: statements commit as they run, on every engine. A script that fails halfway leaves the statements before it committed. The confirmation on an unqualified UPDATE or DELETE is the safety net until that changes.</p>
       </div>
     </div>
   </section>
