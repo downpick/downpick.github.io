@@ -36,7 +36,7 @@
     each('[data-platform-detail]', function (el) { el.textContent = p[1]; });
     each('[data-platform-title]', function (el) { el.textContent = p[2]; });
     each('[data-platform-file]', function (el) { el.textContent = p[3]; });
-    each('[data-platform-link]', function (el) { el.href = RELEASE + p[3]; });
+    each('[data-platform-link]', function (el) { el.href = RELEASE + encodeURIComponent(p[3]); });
   }
 
   // `?platform=win` forces a platform, mirroring the design's platformOverride prop.

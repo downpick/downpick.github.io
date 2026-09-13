@@ -3,6 +3,7 @@
   "Oracle in Thin mode — no Instant Client, ODBC driver, or ORACLE_HOME to install",
   "Schema explorer down to columns and collection fields",
   "Query editor with syntax highlighting and autocomplete for SQL and MongoDB shell syntax",
+  "Context-aware SQL autocomplete that follows aliases, joins, CTEs, nested queries, and set-operation branches",
   "Run the whole tab, the selection, or just the statement under the cursor",
   "Ask AI writes queries from your schema and cannot execute anything",
   "Ask AI reads the query open in the editor, or only the part you selected",

@@ -1,5 +1,16 @@
 [
   {
+    "version": "1.3.2",
+    "date": "13 September 2026",
+    "title": "Automatic updates and autocomplete that knows the query",
+    "notes": [
+      "Context-aware SQL autocomplete now follows the statement and query scope at the cursor — table aliases, schema-qualified names, joins, comma joins, CTEs, derived tables, nested queries, and set-operation branches stay in context without leaking names from sibling statements",
+      "Completion understands PostgreSQL, SQL Server, and Oracle identifier rules, including quoted, bracketed, and case-sensitive identifiers. It stays out of comments and string literals, inserts an alias for ambiguous columns, and replaces only the identifier being completed",
+      "Windows NSIS installations and Linux AppImages can check for stable updates, download them in the background, and offer Restart and Update when ready. The restart waits for running queries to finish or be cancelled, then closes connections and locks the vault",
+      "This release ships macOS DMG and ZIP downloads, a Windows x64 installer, and a Linux x64 AppImage. The macOS packages are ad-hoc signed and need a manual download; SHA256SUMS.txt is attached to the GitHub release"
+    ]
+  },
+  {
     "version": "1.2.0",
     "date": "30 August 2026",
     "title": "Oracle, an assistant that reads your editor, and a nudge when the query lands",

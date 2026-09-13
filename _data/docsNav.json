@@ -17,6 +17,10 @@
       "label": "Running queries"
     },
     {
+      "id": "updates",
+      "label": "Updates"
+    },
+    {
       "id": "vault",
       "label": "The vault"
     },

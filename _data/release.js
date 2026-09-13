@@ -3,34 +3,34 @@
 // platform detection in js/site.js all read from here.
 //
 // To ship a new version: change `version`, `date` and `dateHuman`, update the
-// `size` on each artifact, and add an entry to _data/changelog.json.
+// artifact list, and add an entry to _data/changelog.json.
 
-const version = '1.2.0';
-const date = '2026-08-30';        // ISO, for JSON-LD and the sitemap
-const dateHuman = '30 August 2026';
+const version = '1.3.2';
+const date = '2026-09-13';        // ISO, for JSON-LD and the sitemap
+const dateHuman = '13 September 2026';
 
-// `suffix` is appended to `Downpick-<version>` to make the release filename.
-// `key` marks the four builds js/site.js can auto-detect; the zip duplicates
-// have none, so they only ever appear in the full table.
+// `suffix` is appended to `Downpick-<version>` to make the release filename;
+// `prefix` is used by the Windows NSIS installer. `key` marks the four builds
+// js/site.js can auto-detect; the zip duplicates have none, so they only ever
+// appear in the full table.
 const artifacts = [
-  { os: 'macOS',   arch: 'Apple Silicon',      suffix: '-arm64.dmg',      size: '124 MB', key: 'mac-arm',   label: 'macOS',   detail: 'Apple Silicon · .dmg', title: 'macOS · Apple Silicon' },
-  { os: 'macOS',   arch: 'Intel',              suffix: '.dmg',            size: '129 MB', key: 'mac-intel', label: 'macOS',   detail: 'Intel · .dmg',         title: 'macOS · Intel' },
-  { os: 'macOS',   arch: 'zip, Apple Silicon', suffix: '-arm64-mac.zip',  size: '124 MB' },
-  { os: 'macOS',   arch: 'zip, Intel',         suffix: '-mac.zip',        size: '129 MB' },
-  { os: 'Windows', arch: 'x64',                suffix: '-win.zip',        size: '144 MB', key: 'win',       label: 'Windows', detail: 'x64 · .zip',           title: 'Windows · x64' },
-  { os: 'Linux',   arch: 'x64',                suffix: '.AppImage',       size: '133 MB', key: 'linux',     label: 'Linux',   detail: 'AppImage · x64',       title: 'Linux · x64' }
+  { os: 'macOS',   arch: 'Apple Silicon',      suffix: '-arm64.dmg',     key: 'mac-arm',   label: 'macOS',   detail: 'Apple Silicon · .dmg', title: 'macOS · Apple Silicon' },
+  { os: 'macOS',   arch: 'Intel',              suffix: '.dmg',           key: 'mac-intel', label: 'macOS',   detail: 'Intel · .dmg',         title: 'macOS · Intel' },
+  { os: 'macOS',   arch: 'zip, Apple Silicon', suffix: '-arm64-mac.zip' },
+  { os: 'macOS',   arch: 'zip, Intel',         suffix: '-mac.zip' },
+  { os: 'Windows', arch: 'x64 installer',     prefix: 'Downpick Setup ', suffix: '.exe', key: 'win', label: 'Windows', detail: 'x64 · .exe installer', title: 'Windows · x64' },
+  { os: 'Linux',   arch: 'x64',                suffix: '.AppImage',      key: 'linux',     label: 'Linux',   detail: 'AppImage · x64',       title: 'Linux · x64' }
 ];
 
-// There is no Windows .exe installer: docs/releasing.md in the app repository
-// explains that the nsis target can't be built on Apple Silicon, so the
-// release ships Downpick-<version>-win.zip instead.
+// Windows releases use the NSIS installer. Portable/older ZIP builds are not
+// part of this release because automatic updates require an installed build.
 
 const tag = 'v' + version;
 const base = 'https://github.com/downpick/downpick/releases/download/' + tag + '/';
 
 const full = artifacts.map(function (a) {
-  const file = 'Downpick-' + version + a.suffix;
-  return Object.assign({}, a, { file: file, url: base + file });
+  const file = (a.prefix ? a.prefix + version : 'Downpick-' + version) + a.suffix;
+  return Object.assign({}, a, { file: file, url: base + encodeURIComponent(file) });
 });
 
 // The shape js/site.js wants: key -> [label, detail, title, filename].

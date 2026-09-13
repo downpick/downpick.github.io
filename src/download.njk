@@ -34,13 +34,13 @@ jsonld: true
 {%- for a in release.artifacts %}
       <a class="dl-row" href="{{ a.url }}">
         <span class="dl-os"><span class="dl-os-name">{{ a.os }}</span><span class="dl-os-arch">{{ a.arch }}</span></span>
-        <span class="dl-file">{{ a.file }} <span class="dl-size">{{ a.size }}</span></span>
+        <span class="dl-file">{{ a.file }}{% if a.size %} <span class="dl-size">{{ a.size }}</span>{% endif %}</span>
         <span class="dl-go">Download ↓</span>
       </a>
 {%- endfor %}
       <div class="dl-foot">
         <span>Checksums and release notes</span>
-        <a href="https://github.com/downpick/downpick/releases">On GitHub →</a>
+        <a href="{{ release.notes }}">On GitHub →</a>
       </div>
     </div>
   </section>
@@ -56,8 +56,8 @@ jsonld: true
         <p class="card-body">You'll set a master password for the vault, and can say where the vault file goes. There is no recovery for the password — write it down somewhere safe.</p>
       </div>
       <div class="card card--sm">
-        <h2 class="card-title">The builds are unsigned</h2>
-        <p class="card-body">macOS blocks the first launch — open System Settings → Privacy &amp; Security and choose Open Anyway. On Windows, SmartScreen needs More info → Run anyway.</p>
+        <h2 class="card-title">First launch warnings</h2>
+        <p class="card-body">The macOS packages are ad-hoc signed, not notarized — choose Open Anyway in System Settings → Privacy &amp; Security if needed. Windows may show SmartScreen; choose More info → Run anyway after verifying the checksum.</p>
       </div>
     </div>
   </section>
@@ -66,7 +66,7 @@ jsonld: true
     <div class="dl-note-box">
       <div>
         <h2 class="dl-note-title">Rather build it yourself?</h2>
-        <p class="dl-note-body">The source is on GitHub. Node 20 and two npm installs is the whole story.</p>
+        <p class="dl-note-body">The source is on GitHub. Node 24, npm 11.19.0, and two npm installs is the whole story.</p>
       </div>
       <a class="btn btn--outline" href="https://github.com/downpick/downpick">Build from source</a>
     </div>

@@ -39,7 +39,7 @@ pagesCss: true
           <div class="numstep-n">01</div>
           <div>
             <h3 class="numstep-t">Install it</h3>
-            <p class="numstep-b">Grab the build for your platform from the <a href="/download.html">download page</a>. On macOS, open the dmg and drag Downpick to Applications; on Windows, extract the zip anywhere and run <span class="mono">Downpick.exe</span>; on Linux, mark the AppImage executable and run it. The builds are unsigned, so the first launch needs one extra step — on macOS, System Settings → Privacy &amp; Security → Open Anyway; on Windows, More info → Run anyway.</p>
+            <p class="numstep-b">Grab the build for your platform from the <a href="/download.html">download page</a>. On macOS, open the dmg and drag Downpick to Applications; on Windows, run the x64 NSIS installer; on Linux, mark the AppImage executable and run it. The downloads are not trusted-signed, so the first launch may need one extra step — on macOS, System Settings → Privacy &amp; Security → Open Anyway; on Windows, More info → Run anyway.</p>
           </div>
         </div>
         <div class="numstep">
@@ -114,6 +114,17 @@ pagesCss: true
       <h3 class="docs-h3">Results and Messages</h3>
       <p class="docs-p docs-p--tight">Rows land in <span class="strong-inline">Results</span>. Statements that return no rows — an UPDATE, a DELETE, a CREATE INDEX, the DDL half of a batch — land in <span class="strong-inline">Messages</span> instead, one line per statement in the order they ran, each saying what it did and how many rows it affected. The total time is at the bottom.</p>
       <p class="docs-p docs-p--last">Both views are always reachable from the status bar, because one batch can fill either or both. Run three SELECTs and an UPDATE and you'll have rows in one and a line about the UPDATE in the other.</p>
+    </section>
+
+    <section id="updates" class="docs-section">
+      <h2 class="docs-h2">Updates</h2>
+      <p class="docs-p">Installed Windows builds and Linux AppImages check for stable updates shortly after launch and every six hours while Downpick is open. A Developer ID-signed macOS build can update too; the macOS packages in version {{ release.version }} are ad-hoc signed, so they use manual downloads.</p>
+      <p class="docs-p docs-p--tight">When an update is available, Downpick downloads it in the background and offers <span class="strong-inline">Restart and Update</span> when it is ready. <span class="strong-inline">Later</span> leaves the update staged without installing it on an ordinary quit. Restart waits for running queries to finish or be cancelled, then closes database connections and locks the vault before handing control to the installer.</p>
+      <p class="docs-p docs-p--tight">Check manually from <span class="mono">Downpick → Check for Updates…</span> on macOS or <span class="mono">Help → Check for Updates…</span> on Windows and Linux. Development builds, portable or unsupported distributions, and unsigned macOS builds show the <a href="/download.html">release downloads</a> instead.</p>
+      <div class="note-box">
+        <h3 class="note-title">Upgrading from an older build</h3>
+        <p class="note-body">Versions from before the updater was added need one manual installation of this release before future updates can be offered. If you used an older Windows ZIP, install the new NSIS installer. Existing ad-hoc macOS builds need a future Developer ID-signed build before macOS automatic updates can work.</p>
+      </div>
     </section>
 
     <section id="vault" class="docs-section">

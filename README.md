@@ -58,8 +58,8 @@ untouched.
 ## Shipping a new version
 
 Edit **`_data/release.js`** — it is the only file a version bump touches. Change
-`version`, `date` and `dateHuman`, and update the `size` on each artifact.
-Filenames are built from the version, so they need no editing.
+`version`, `date` and `dateHuman`, and update the artifact list. Filenames are
+built from the version, except for the Windows NSIS installer's `prefix`.
 
 Everything downstream follows: the download table and the "detected on this
 machine" card, both JSON-LD blocks, the footer line, the docs lede, the home and
@@ -71,9 +71,9 @@ Then add an entry to the top of **`_data/changelog.json`**. The newest entry
 renders with separate download and release-notes links; older ones get the
 combined link. Note bodies may contain inline HTML.
 
-Note there is no Windows `.exe` installer: `docs/releasing.md` in the app
-repository explains that the nsis target can't be built on Apple Silicon, so the
-release ships `Downpick-<version>-win.zip` instead.
+Windows releases use the NSIS installer, named `Downpick Setup <version>.exe`.
+The updater requires an installed build; portable or unsupported distributions
+fall back to the release downloads.
 
 ## Editing the docs
 
