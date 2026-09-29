@@ -57,8 +57,14 @@ untouched.
 
 ## Shipping a new version
 
-Edit **`_data/release.js`** — it is the only file a version bump touches. Change
-`version`, `date` and `dateHuman`, and update the artifact list. Filenames are
+Start from the **published GitHub release and its exact tag** in
+[downpick/downpick](https://github.com/downpick/downpick/releases). Compare it
+with the version currently in `_data/release.js`; use the tagged source to
+confirm labels, defaults, engine support, and limitations.
+
+Edit **`_data/release.js`** for the release metadata: `version`, `date` and
+`dateHuman` (the publication date), and the artifact list. Check every generated
+filename against the release API's asset names and download URLs. Filenames are
 built from the version, except for the Windows NSIS installer's `prefix`.
 
 Everything downstream follows: the download table and the "detected on this
@@ -71,9 +77,24 @@ Then add an entry to the top of **`_data/changelog.json`**. The newest entry
 renders with separate download and release-notes links; older ones get the
 combined link. Note bodies may contain inline HTML.
 
-Windows releases use the NSIS installer, named `Downpick Setup <version>.exe`.
-The updater requires an installed build; portable or unsupported distributions
-fall back to the release downloads.
+Update the user-facing content too: **`src/index.njk`**, **`src/features.njk`**,
+**`src/docs.njk`**, and the relevant data files (especially features, settings,
+and docs navigation). Keep existing changelog entries. Verify signing and
+updater behavior for the actual build before changing installation guidance.
+
+Windows releases use the NSIS installer. For 1.4.0, GitHub publishes it as
+`Downpick.Setup.1.4.0.exe`, even though the build and release prose use spaces.
+Use the uploaded asset name, not a guessed filename. The updater requires an
+installed build; portable or unsupported distributions fall back to downloads.
+
+Run `npm run build`, check internal links and anchors in `_site/`, and inspect
+the home, features, docs, changelog, and download pages at desktop and narrow
+widths. Check download detection with all four `?platform=` values above. Do
+not commit `_site/`.
+
+The reusable Codex skill is **`$downpick-site-update`** when installed in your
+Codex skills directory. Example: “Use $downpick-site-update to update this site
+for Downpick 1.5.0 and give me the publishing steps.”
 
 ## Editing the docs
 
@@ -158,7 +179,33 @@ There are two versions of the logo, and they are not interchangeable:
 
 Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site and
 deploys `_site/` to Pages. This needs Settings → Pages → Source set to
-**GitHub Actions** (not "Deploy from a branch").
+**GitHub Actions** (not "Deploy from a branch"). This repository already uses
+that setting. Pull requests run the build without deploying; a manual workflow
+run on `main` also deploys.
+
+For the 1.4.0 content update:
+
+1. Review the changes with `git diff`, then run `npm run build`. Preview with
+   `npm run dev` at <http://localhost:8000/>.
+2. Create a review branch and commit the source changes:
+
+   ```bash
+   git switch -c codex/site-1.4.0
+   git add README.md _data/release.js _data/changelog.json _data/features.json _data/settings.json _data/docsNav.json src/index.njk src/features.njk src/docs.njk
+   git commit -m "Update website for Downpick 1.4.0"
+   git push -u origin codex/site-1.4.0
+   ```
+
+3. Open a pull request into `main`, wait for the **build** check, and merge it.
+   That merge triggers **Deploy to GitHub Pages**. No new app release or website
+   version tag is needed.
+4. Follow the run in the repository's [Actions tab](https://github.com/downpick/downpick.github.io/actions/workflows/deploy.yml).
+   Both **build** and **deploy** must finish successfully.
+5. Open <https://downpick.github.io/> and verify version 1.4.0, the latest
+   What's new entry, the new docs sections, and the platform download links.
+
+For future versions, replace the version in the branch and commit message and
+stage the actual changed source files.
 
 ## Editing styles
 

@@ -9,12 +9,16 @@
   "Ask AI reads the query open in the editor, or only the part you selected",
   "Ask AI conversations are saved per tab, with a history you can reopen or clear",
   "Virtualized results grid for large result sets",
-  "Copy results as a table, or export to CSV or Excel",
+  "Copy results as a table or formatted JSON, or export to CSV or Excel",
   "Encrypted credential vault with auto-lock, kept wherever you choose to put it",
   "Confirmation before UPDATE or DELETE with no WHERE clause",
   "Cancel a running query, or set a query timeout",
   "Live elapsed timer on a running query, with a cancel button",
   "Notification when a long query finishes, in the app or from the system",
   "Messages view listing rows affected for statements that return no result set",
-  "No account, no telemetry"
+  "No account, no telemetry",
+  "Browse PostgreSQL and SQL Server indexes, search their names, and copy available creation scripts",
+  "Browse PostgreSQL and SQL Server functions and procedures and open their SQL definitions",
+  "Initial database, explicit TLS modes, and custom PEM CA certificates for PostgreSQL and SQL Server",
+  "Verified TLS with bundled Amazon RDS certificates for PostgreSQL RDS endpoints in Default mode"
 ]
