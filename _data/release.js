@@ -1,13 +1,13 @@
-// The current release. This is the only file a version bump touches — the
-// download page, both JSON-LD blocks, the footer, the docs lede and the
-// platform detection in js/site.js all read from here.
+// Current release metadata, shared by downloads, JSON-LD, the footer,
+// the docs lede, and platform detection in js/site.js.
 //
 // To ship a new version: change `version`, `date` and `dateHuman`, update the
-// artifact list, and add an entry to _data/changelog.json.
+// artifact list, and add an entry to _data/changelog.json. See README.md
+// for the accompanying feature and documentation updates.
 
-const version = '1.3.2';
-const date = '2026-09-13';        // ISO, for JSON-LD and the sitemap
-const dateHuman = '13 September 2026';
+const version = '1.4.0';
+const date = '2026-09-29';        // ISO, for JSON-LD and the sitemap
+const dateHuman = '29 September 2026';
 
 // `suffix` is appended to `Downpick-<version>` to make the release filename;
 // `prefix` is used by the Windows NSIS installer. `key` marks the four builds
@@ -18,7 +18,7 @@ const artifacts = [
   { os: 'macOS',   arch: 'Intel',              suffix: '.dmg',           key: 'mac-intel', label: 'macOS',   detail: 'Intel · .dmg',         title: 'macOS · Intel' },
   { os: 'macOS',   arch: 'zip, Apple Silicon', suffix: '-arm64-mac.zip' },
   { os: 'macOS',   arch: 'zip, Intel',         suffix: '-mac.zip' },
-  { os: 'Windows', arch: 'x64 installer',     prefix: 'Downpick Setup ', suffix: '.exe', key: 'win', label: 'Windows', detail: 'x64 · .exe installer', title: 'Windows · x64' },
+  { os: 'Windows', arch: 'x64 installer',     prefix: 'Downpick.Setup.', suffix: '.exe', key: 'win', label: 'Windows', detail: 'x64 · .exe installer', title: 'Windows · x64' },
   { os: 'Linux',   arch: 'x64',                suffix: '.AppImage',      key: 'linux',     label: 'Linux',   detail: 'AppImage · x64',       title: 'Linux · x64' }
 ];
 

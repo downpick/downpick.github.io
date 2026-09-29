@@ -4,7 +4,7 @@ layout: base.njk
 permalink: /features.html
 navKey: features
 title: "Features — Downpick"
-description: "What Downpick does, in order: connect to every PostgreSQL, SQL Server, Oracle, and MongoDB server at once, see the shape of your data, write or describe a query, and take the results away as a copy, CSV, or Excel."
+description: "What Downpick does, in order: connect to every PostgreSQL, SQL Server, Oracle, and MongoDB server at once, see the shape of your data, write or describe a query, and take the results away as a table, JSON, CSV, or Excel."
 ogDescription: "Connect, look, ask, take away — what Downpick does."
 pagesCss: true
 ---
@@ -21,6 +21,7 @@ pagesCss: true
         <p class="step-eyebrow">01 · Connect</p>
         <h2 class="step-title">Every server, open at once</h2>
         <p class="step-body">Four engines — PostgreSQL, SQL Server, Oracle, MongoDB — and as many of each as you like. Add a connection once and it stays in the sidebar, staging next to production next to the local copy, each with a dot telling you whether it's live. Passwords go into the vault, not into a config file. If a database appears while you're connected, reload the list from the connection's menu without dropping the connection.</p>
+        <p class="step-body">On PostgreSQL and SQL Server, <a href="/docs.html#connection-options">Advanced options</a> lets you choose the initial database, TLS mode, and custom CA certificates. PostgreSQL Amazon RDS endpoints use verified TLS by default, with the certificates included.</p>
         <div class="mock">
           <div class="mock-line">⬡ Ridgeline Analytics (staging) <span class="mock-dim">·</span> <span class="mock-dim">idle</span></div>
           <div class="mock-line mock-line--strong">⬡ Ridgeline Coffee (local) <span class="mock-dim">·</span> <span class="mock-ok">connected</span></div>
@@ -32,6 +33,7 @@ pagesCss: true
         <p class="step-eyebrow">02 · Look</p>
         <h2 class="step-title">See the shape of your data</h2>
         <p class="step-body">The explorer goes all the way down — databases, schemas, tables, columns and their types. On MongoDB, collections and their fields. On Oracle, your own schemas rather than Oracle's: <span class="mono">SYS</span>, <span class="mono">SYSTEM</span> and the rest stay out of the tree. Double-click any table to query it.</p>
+        <p class="step-body">On PostgreSQL and SQL Server, expand a table to inspect its indexes, search them by name, and copy available creation SQL. Functions and procedures appear under each schema — double-click one to open its definition, including the exact PostgreSQL overload. <a href="/docs.html#explorer">See how the explorer works →</a></p>
         <div class="mock">
           <div class="mock-line mock-line--strong">▾ ▦ coffees</div>
           <div class="mock-line mock-split"><span>&nbsp;&nbsp;— name</span><span class="mock-dim">text</span></div>
@@ -61,7 +63,7 @@ pagesCss: true
       <div class="step-split step-split--top">
         <div>
           <h2 class="step-title">Results that behave</h2>
-          <p class="step-body step-body--last">A grid that scrolls smoothly at a hundred thousand rows, with types under every column heading. Mongo documents flatten into a table, or open as a tree, one document at a time. Then copy it as a table into Slack or Sheets, or export CSV or Excel.</p>
+          <p class="step-body step-body--last">A grid that scrolls smoothly at a hundred thousand rows, with types under every column heading. Mongo documents flatten into a table, or open as a tree, one document at a time. Copy it as a table into Slack or Sheets, as formatted JSON with nested values and nulls intact, or export CSV or Excel. JSON keeps MongoDB documents in their original structure and gives duplicate or unnamed SQL columns distinct keys.</p>
         </div>
         <div class="result-side">
           <div class="stat-row">
@@ -74,12 +76,13 @@ pagesCss: true
               <div class="stat-l">round trip</div>
             </div>
             <div class="stat">
-              <div class="stat-n">3</div>
-              <div class="stat-l">export formats</div>
+              <div class="stat-n">4</div>
+              <div class="stat-l">ways to take results</div>
             </div>
           </div>
           <div class="chip-row">
             <span class="chip">⧉ Copy</span>
+            <span class="chip">⧉ JSON</span>
             <span class="chip">↓ CSV</span>
             <span class="chip">↓ Excel</span>
           </div>
@@ -112,8 +115,8 @@ pagesCss: true
         <p class="rest-body">Your open query tabs, pane sizes, and window position come back exactly as you left them.</p>
       </div>
       <div class="rest">
-        <h3 class="rest-title">Errors, verbatim</h3>
-        <p class="rest-body">The server's own message, in monospace, with the line number — not a friendlier rewrite of it.</p>
+        <h3 class="rest-title">Errors you can act on</h3>
+        <p class="rest-body">Query errors show the server's message and line number. Connection errors add guidance for certificate validation, TLS negotiation, and PostgreSQL servers that refuse unencrypted connections.</p>
       </div>
       <div class="rest">
         <h3 class="rest-title">Keyboard first</h3>

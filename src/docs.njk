@@ -4,7 +4,7 @@ layout: base.njk
 permalink: /docs.html
 navKey: docs
 title: "Documentation — Downpick"
-description: "Downpick {version} documentation: getting started, connections, Oracle, running queries, the encrypted vault, settings, AI providers, keyboard shortcuts, and where files live."
+description: "Downpick {version} documentation: getting started, connections and TLS, indexes and routines, Oracle, running queries, JSON and exports, the encrypted vault, settings, AI providers, keyboard shortcuts, and where files live."
 ogDescription: "Everything Downpick does, and the handful of decisions it asks you to make."
 pagesCss: true
 ---
@@ -77,6 +77,55 @@ pagesCss: true
       </div>
     </section>
 
+    <section id="connection-options" class="docs-section">
+      <h2 class="docs-h2">Advanced connection options</h2>
+      <p class="docs-p">When adding or editing a PostgreSQL or SQL Server connection, expand <span class="strong-inline">Advanced options</span>. The initial database, TLS mode, and CA certificates are saved with the profile in the vault and reused when you test or reconnect.</p>
+
+      <h3 class="docs-h3">Initial Database (optional)</h3>
+      <p class="docs-p">Choose the database used to test the connection and list databases. Leave it blank to use <span class="mono">postgres</span> on PostgreSQL or <span class="mono">master</span> on SQL Server. Opening another database in the explorer uses that database for its connection without replacing the saved initial choice.</p>
+
+      <h3 class="docs-h3">TLS / Encryption</h3>
+      <div class="deftable">
+        <div class="defrow">
+          <div class="defrow-name">Default (compatible with existing profiles)</div>
+          <p class="defrow-body">PostgreSQL hosts ending in <span class="mono">.rds.amazonaws.com</span> use verified TLS with bundled Amazon RDS certificates. Other PostgreSQL hosts keep the driver's defaults, including <span class="mono">PGSSLMODE</span>. SQL Server encrypts traffic but skips certificate verification. Providing a custom CA enables verification for either engine.</p>
+        </div>
+        <div class="defrow">
+          <div class="defrow-name">TLS — verify certificate and hostname</div>
+          <p class="defrow-body">Requires encryption and checks the server's identity. Uses your custom PEM CA bundle if supplied; otherwise uses the default trust roots, with bundled RDS roots for RDS endpoints.</p>
+        </div>
+        <div class="defrow">
+          <div class="defrow-name">TLS — skip certificate verification</div>
+          <p class="defrow-body">Encrypts traffic without verifying the server's identity. On PostgreSQL, this behavior requires choosing this mode explicitly.</p>
+        </div>
+        <div class="defrow">
+          <div class="defrow-name">Do not request encryption</div>
+          <p class="defrow-body">Disables TLS on PostgreSQL and stops requesting encryption on SQL Server. SQL Server can still require TLS through its server policy.</p>
+        </div>
+      </div>
+
+      <h3 class="docs-h3">CA Certificates (optional PEM)</h3>
+      <p class="docs-p">In Default or verified TLS mode, paste public CA certificates in PEM format into this field — never a private key. A custom bundle replaces the default certificate authorities for that profile. RDS certificates ship with Downpick; connecting does not download them.</p>
+      <div class="note-box">
+        <h3 class="note-title">Aliases, tunnels, and failed verification</h3>
+        <p class="note-body">Custom DNS aliases and tunnels are not automatically recognized as RDS endpoints. Choose verified TLS and supply the appropriate CA certificates, using a hostname that matches the server certificate. A failed connection never automatically retries with encryption or verification disabled. Connection errors provide guidance on certificate validation, TLS negotiation, and PostgreSQL servers that require encryption.</p>
+      </div>
+    </section>
+
+    <section id="explorer" class="docs-section">
+      <h2 class="docs-h2">Exploring indexes and routines</h2>
+      <p class="docs-p">PostgreSQL and SQL Server expose indexes, functions, and procedures in the explorer. These groups are not available for Oracle or MongoDB in this release.</p>
+
+      <h3 class="docs-h3">Table indexes</h3>
+      <p class="docs-p">Expand a table, then its <span class="strong-inline">Indexes</span> group. Each index shows its type or a <span class="mono">PK</span> or <span class="mono">UNIQUE</span> indicator; hover for the type and full flags. The explorer search includes index names.</p>
+      <p class="docs-p">Right-click an index and choose <span class="strong-inline">Copy creation script</span> to copy its SQL, or copy its name or type. The script action is disabled when the index type is unsupported or the database does not expose enough metadata to recreate it.</p>
+
+      <h3 class="docs-h3">Functions and procedures</h3>
+      <p class="docs-p">Under a schema, expand <span class="strong-inline">Functions</span> or <span class="strong-inline">Procedures</span>. Double-click a routine to open its definition in an editor tab; the right-click menu also offers <span class="strong-inline">Open script in editor</span>, <span class="strong-inline">Copy script</span>, and <span class="strong-inline">Copy name</span>. Opening a definition does not execute it.</p>
+      <p class="docs-p">PostgreSQL overloads are listed separately with their arguments, so each entry opens that exact definition. Search by name or arguments. Definitions depend on the metadata your database account can read.</p>
+      <p class="docs-p docs-p--last">Routine groups are on by default. If they are hidden, enable <span class="strong-inline">Settings → General → Show functions and procedures</span>; turn it off to hide both groups again. Use <span class="strong-inline">Refresh schema</span> from the database or schema menu to reload changes made outside Downpick.</p>
+    </section>
+
     <section id="oracle" class="docs-section">
       <h2 class="docs-h2">Oracle</h2>
       <p class="docs-p">Oracle needs nothing installed first. There is no Instant Client to download, no ODBC or JDBC driver, and no <span class="mono">ORACLE_HOME</span> to set — Downpick talks to the database directly. Two things follow from that, and one from Oracle itself.</p>
@@ -114,6 +163,16 @@ pagesCss: true
       <h3 class="docs-h3">Results and Messages</h3>
       <p class="docs-p docs-p--tight">Rows land in <span class="strong-inline">Results</span>. Statements that return no rows — an UPDATE, a DELETE, a CREATE INDEX, the DDL half of a batch — land in <span class="strong-inline">Messages</span> instead, one line per statement in the order they ran, each saying what it did and how many rows it affected. The total time is at the bottom.</p>
       <p class="docs-p docs-p--last">Both views are always reachable from the status bar, because one batch can fill either or both. Run three SELECTs and an UPDATE and you'll have rows in one and a line about the UPDATE in the other.</p>
+    </section>
+
+    <section id="exporting-results" class="docs-section">
+      <h2 class="docs-h2">Copy and export results</h2>
+      <p class="docs-p">After running a query that returns a result set, use the controls in the result bar. <span class="strong-inline">Copy</span> puts a table on the clipboard for pasting into a spreadsheet or chat. <span class="strong-inline">CSV</span> and <span class="strong-inline">Excel</span> open a save dialog for the results.</p>
+
+      <h3 class="docs-h3">Copy as JSON</h3>
+      <p class="docs-p">Click <span class="strong-inline">JSON</span> to copy the result set as a formatted JSON array. It copies to the clipboard; it does not open a file dialog. Nested objects, arrays, and <span class="mono">null</span> values are preserved.</p>
+      <p class="docs-p">SQL rows become objects keyed by column name. Duplicate names get distinct suffixes, and unnamed columns receive generated names such as <span class="mono">column_1</span>, so one value cannot overwrite another. MongoDB results use their document structure even when the grid is showing a flattened table.</p>
+      <p class="docs-p docs-p--last">The button reports <span class="strong-inline">Copied!</span> when the clipboard write succeeds, or <span class="strong-inline">Copy failed</span> if it cannot write. Paste into your editor or another application to use the JSON.</p>
     </section>
 
     <section id="updates" class="docs-section">

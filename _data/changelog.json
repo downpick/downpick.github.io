@@ -1,5 +1,17 @@
 [
   {
+    "version": "1.4.0",
+    "date": "29 September 2026",
+    "title": "Indexes, routine definitions, JSON results, and connection options",
+    "notes": [
+      "PostgreSQL and SQL Server tables now have an Indexes group, with index types and primary-key or unique indicators. Search by index name and use Copy creation script when the database exposes the SQL. <a href=\"/docs.html#explorer\">Explore indexes →</a>",
+      "The JSON button copies query results as a formatted JSON array, keeping nested objects, arrays, and nulls. MongoDB results keep their document structure; SQL columns with duplicate or empty names get distinct keys. <a href=\"/docs.html#exporting-results\">Copy results →</a>",
+      "Browse functions and procedures in PostgreSQL and SQL Server, then double-click to open a definition in an editor tab. PostgreSQL overloads appear separately with their arguments. Control their visibility with Show functions and procedures in Settings. <a href=\"/docs.html#explorer\">Browse routines →</a>",
+      "Advanced options for PostgreSQL and SQL Server connections add an initial database, explicit TLS modes, and a custom PEM CA bundle. PostgreSQL Amazon RDS endpoints use verified TLS and bundled RDS certificates in Default mode. <a href=\"/docs.html#connection-options\">Configure a connection →</a>",
+      "Connection errors now explain certificate validation failures, TLS negotiation problems, and PostgreSQL servers that reject unencrypted connections. Database and TLS choices stay with the saved profile across vault unlocking, connection tests, and database selection."
+    ]
+  },
+  {
     "version": "1.3.2",
     "date": "13 September 2026",
     "title": "Automatic updates and autocomplete that knows the query",

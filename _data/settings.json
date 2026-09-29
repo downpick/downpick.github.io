@@ -8,6 +8,11 @@
         "body": "Reopens the query tabs you had open last time. Turn it off if your query text is sensitive — the tabs are stored in plain text."
       },
       {
+        "name": "Show functions and procedures",
+        "meta": "on by default · PostgreSQL and SQL Server",
+        "body": "Shows Functions and Procedures groups in the explorer. Double-click a routine to open its SQL definition, or turn this off to hide both groups. PostgreSQL overloads are listed with their arguments. See <a href=\"#explorer\">the explorer guide</a>."
+      },
+      {
         "name": "Query timeout",
         "meta": "0–3600s · default 30s",
         "body": "Cancels a query still running after this long. Set it to 0 for no limit."

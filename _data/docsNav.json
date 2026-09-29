@@ -9,12 +9,24 @@
       "label": "Connections"
     },
     {
+      "id": "connection-options",
+      "label": "Connection options"
+    },
+    {
+      "id": "explorer",
+      "label": "Explorer"
+    },
+    {
       "id": "oracle",
       "label": "Oracle"
     },
     {
       "id": "running-queries",
       "label": "Running queries"
+    },
+    {
+      "id": "exporting-results",
+      "label": "Copy and export results"
     },
     {
       "id": "updates",
